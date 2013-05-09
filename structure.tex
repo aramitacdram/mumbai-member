@@ -234,7 +234,6 @@
 \begin{document}
 
 \newdateformat{finshortdate}{\THEDAY.\THEMONTH.\THEYEAR}
-
 \selectlanguage{finnish}
 \finshortdate
 
@@ -247,3 +246,14 @@
 %\renewcommand{\labelitemii}{$\circ$}
 %\renewcommand{\labelitemiii}{$\cdot$}
 %\renewcommand{\labelitemiv}{$\ast$}
+
+\kansilehti
+\lisenssi
+\include{people}
+\mikro
+\projekti
+\tableofcontents
+\addtocontents{toc}{\vspace*{-30pt}} % move start of toc higher on page
+\input{chapters} % incl. Opensolutionfile, Closesolutionfile
+\input{appendices}
+\end{document}
