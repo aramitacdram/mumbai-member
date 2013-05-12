@@ -185,9 +185,9 @@
     pdfnewwindow=true,        % links in new window
     colorlinks=true,          % false: boxed links; true: colored links
     linkcolor=black,          % color of internal links (change box color with linkbordercolor)
-    citecolor=blue,           % color of links to bibliography
-    filecolor=blue,           % color of file links
-    urlcolor=green            % color of external links
+    citecolor=black,           % color of links to bibliography
+    filecolor=black,           % color of file links
+    urlcolor=black            % color of external links
 }
 
 % Kertoo mathtoolsin olevan käytössä. Muuttuu turhaksi, jos LaTeX-pakettienhallinnat saadaan kaikilla kuntoon.
@@ -224,6 +224,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newif\ifvarit
+\varittrue
+
 \newcommand{\kurssinTunnus}{}
 \newcommand{\kurssinNimi}{}
 \newcommand{\sitaatti}{Sitaatti puuttuu.}
@@ -234,11 +237,22 @@
 \newcommand{\metasivu}{}
 \newcommand{\mikroRajapinta}{\mikro}
 \newcommand{\versioRajapinta}{Versio \kirjanVersio \, (\today)}
-\newcommand{\vari}{}
 
 % Omat komennot
 \input{../commons/packagelist}
 \input{meta}
+
+\ifvarit
+    \newcommand{\vari}{}
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.2,0.27,0.0,0.0} % Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.0,0.42,0.65,0.0} % Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.0,0.0} % Tehtävänumerot
+\else
+    \newcommand{\vari}{_bw}
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.0,0.0,0.0,0.25} % Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.0,0.0,0.0,0.6} % Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.0,0.0,0.0,0.8} % Tehtävänumerot
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
