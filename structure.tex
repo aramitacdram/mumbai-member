@@ -224,8 +224,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% allaolevia loogisia muuttujia voi muuttaa meta.tex-tiedostossa
+% esim. \varitfalse
+
+% väreissä vai mustavalkoisena
+% vaatii vastaavat kuvatiedostot
 \newif\ifvarit
 \varittrue
+
+% versionumero kansilehteen
+\newif\ifversio
+\versiotrue
+
+% mikrorahoituskanavat kirjan alkuun
+\newif\ifmikro
+\mikrotrue
 
 \newcommand{\kurssinTunnus}{}
 \newcommand{\kurssinNimi}{}
@@ -235,8 +248,6 @@
 \newcommand{\kirjanPainopaikka}{}
 \newcommand{\kirjanVastaavuus}{}
 \newcommand{\metasivu}{}
-\newcommand{\mikroRajapinta}{\mikro}
-\newcommand{\versioRajapinta}{Versio \kirjanVersio \, (\today)}
 
 % Omat komennot
 \input{../commons/constants}
@@ -276,10 +287,19 @@
 %\renewcommand{\labelitemiii}{$\cdot$}
 %\renewcommand{\labelitemiv}{$\ast$}
 
-\kansilehti
+\ifversio
+    \kansilehti{Versio \kirjanVersio \, (\today)}
+\else
+    \kansilehti{}
+\fi
+
 \lisenssi
 \include{people}
-\mikroRajapinta
+
+\ifmikro
+    \mikro
+\fi
+
 \projekti
 \tableofcontents
 \addtocontents{toc}{\vspace*{-30pt}} % move start of toc higher on page

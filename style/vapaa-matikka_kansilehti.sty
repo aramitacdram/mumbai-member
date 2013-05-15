@@ -1,6 +1,6 @@
 \ProvidesPackage{../commons/style/vapaa-matikka_kansilehti}
 
-\newcommand{\kansilehti}{
+\newcommand{\kansilehti}[1]{
 \begin{titlepage}
 \vspace*{2.5cm}
 
@@ -42,7 +42,7 @@
     $\vcenter{\hbox{\includegraphics[scale=0.3]{../commons/logo/cc.pdf}}}$
     $\vcenter{\hbox{\includegraphics[scale=0.3]{../commons/logo/by.pdf}}}$
     Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\
-    \versioRajapinta
+    #1
 \end{flushright}
 \end{titlepage}
 
