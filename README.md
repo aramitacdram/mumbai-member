@@ -1,3 +1,3 @@
 ## Vapaa matikka COMMONS
 
-Paketteja ja boilerplateja Vapaa matikka -kirjasarjaa varten. Käytetään submoduulina.
+Packages and templates submodule for Vapaa matikka. Updated through Vapaa matikka TEST repo.
