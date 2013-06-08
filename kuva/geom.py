@@ -47,11 +47,14 @@ def leikkauspiste(X, Y, nimi = "", suunta = 0, valinta = 0, piirra = True):
 		B = 2 * u * (U - a) + 2 * v * (V - b)
 		C = (U - a)**2 + (V - b)**2 - r**2
 		
-		sign = -1
-		if(valinta % 2 == 0):
-			sign = sign = 1
-		
-		t = (-B + sign * sqrt(B**2 - 4 * A * C)) / (2 * A)
+		diskr = B**2 - 4 * A * C
+		if diskr < 0:
+			diskrsqrt = 0
+		elif valinta % 2 == 0:
+			diskrsqrt = sqrt(diskr)
+		else:
+			diskrsqrt = -sqrt(diskr)
+		t = (-B + diskrsqrt) / (2 * A)
 		
 		x = U + t * u
 		y = V + t * v
@@ -71,21 +74,25 @@ def suora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True, Ainf = True
 	
 	if(A == B): B = (B[0] + 0.01, B[1])
 	
-	if Ainf:
-		t = rajoitaLaatikkoon(B, A)
-		if t == float("inf"): raise ValueError("suora: Ei voida piirtää rajoittamatonta suoraa. Rajaa kuva rajaa-funktiolla.")
-		Ap = vekSumma(vekSkaalaa(B, 1 - t), vekSkaalaa(A, t))
-	else:
-		Ap = A
-	
-	if Binf:
-		t = rajoitaLaatikkoon(A, B)
-		if t == float("inf"): raise ValueError("suora: Ei voida piirtää rajoittamatonta suoraa. Rajaa kuva rajaa-funktiolla.")
-		Bp = vekSumma(vekSkaalaa(A, 1 - t), vekSkaalaa(B, t))
-	else:
-		Bp = B
-	
-	tila.out.write("\\draw[thick] {} -- {};\n".format(tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
+	if piirra:
+		if Ainf:
+			t = rajoitaLaatikkoon(B, A)
+			if t == float("inf"): raise ValueError("suora: Ei voida piirtää rajoittamatonta suoraa. Rajaa kuva rajaa-funktiolla.")
+			Ap = vekSumma(vekSkaalaa(B, 1 - t), vekSkaalaa(A, t))
+		else:
+			Ap = A
+		
+		if Binf:
+			t = rajoitaLaatikkoon(A, B)
+			if t == float("inf"): raise ValueError("suora: Ei voida piirtää rajoittamatonta suoraa. Rajaa kuva rajaa-funktiolla.")
+			Bp = vekSumma(vekSkaalaa(A, 1 - t), vekSkaalaa(B, t))
+		else:
+			Bp = B
+		
+		tila.out.write("\\draw[thick] {} -- {};\n".format(tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
+		
+		suunta = 180 * atan2(-(B[1] - A[1]), B[0] - A[0]) / pi
+		nimeaPiste(interpoloi(A, B, kohta), nimi, suunta + 180 * int(not puoli))
 	
 	return {"tyyppi": "suora", "A": A, "B": B}
 
