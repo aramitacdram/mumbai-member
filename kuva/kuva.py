@@ -48,7 +48,7 @@ def lopetaKuva():
 	tila.out.close()
 	os.rename("kuva-tmp-output.txt.tmp", "kuva-tmp-output.txt")
 
-def nimeaPiste(P, nimi, vaaka = 1, pysty = -1):
+def nimeaPiste(P, nimi, vaaka = 1, pysty = 0):
 	"""Kirjoita LaTeX-koodina annettu 'nimi' pisteen P viereen, suunnilleen
 	suuntaan (vaaka, pysty)."""
 	
