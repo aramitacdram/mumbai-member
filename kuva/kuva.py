@@ -48,26 +48,29 @@ def lopetaKuva():
 	tila.out.close()
 	os.rename("kuva-tmp-output.txt.tmp", "kuva-tmp-output.txt")
 
-def nimeaPiste(P, nimi, vaaka = 1, pysty = 0):
+def nimeaPiste(P, nimi, suunta):
 	"""Kirjoita LaTeX-koodina annettu 'nimi' pisteen P viereen, suunnilleen
-	suuntaan (vaaka, pysty)."""
+	suuntaan 'suunta' (asteina)."""
+	
+	suunta = ((int(suunta) + 22) % 360) // 45
+	nodedir = [(1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1)][suunta]
 	
 	nodepos = ""
-	
-	if pysty < 0:
+	if nodedir[1] == -1:
 		nodepos += "below "
-	elif pysty > 0:
+	if nodedir[1] == 1:
 		nodepos += "above "
-	
-	if vaaka < 0:
+	if nodedir[0] == -1:
 		nodepos += "left "
-	elif vaaka > 0:
+	if nodedir[0] == 1:
 		nodepos += "right "
 	
 	nodepos = nodepos[:-1]
 	
-	if pysty and vaaka:
-		nodepos += "=-0.07cm"
+	if nodedir[0] and nodedir[1]:
+		nodepos += "=-0.05cm"
+	else:
+		nodepos += "=0.02cm"
 	
 	tila.out.write("\\draw[color={}] {} node[{}] {{{}}};\n".format(tila.asetukset['piirtovari'], tikzPiste(muunna(P)), nodepos, nimi))
 
@@ -83,13 +86,13 @@ class AsetusPalautin:
 	def __exit__(self, type, value, traceback):
 		tila.asetukset = self.asetukset
 
-def piste(P, nimi = "", suunta = (1, 0)):
-	"""Piirrä piste 'P' kuvaan. Nimi laitetaan suuntaan 'suunta' (ks. nimeaPiste)."""
+def piste(P, nimi = "", suunta = 0):
+	"""Piirrä piste 'P' kuvaan. Nimi laitetaan suuntaan 'suunta' (asteina)."""
 	
 	vari = tila.asetukset['piirtovari']
 	tila.out.write("\\fill[color={}] {} circle (0.07);\n".format(vari, tikzPiste(muunna(P))))
 	
-	nimeaPiste(P, nimi, suunta[0], suunta[1])
+	nimeaPiste(P, nimi, suunta)
 
 # Funktiot piirtoasetusten muuttamiseen. Kaikkia funktioita voi käyttää
 # with-lauseessa, jolloin with-blokin jälkeen asetukset palaavat ennalleen.

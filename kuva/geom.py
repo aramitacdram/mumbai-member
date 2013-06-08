@@ -5,16 +5,16 @@ from kuva import *
 
 import kuvaaja
 
-def piste(x, y, nimi = "", suunta = (1, 0), piirra = True):
-	"""Piirtää pisteen (x, y). Nimi kirjoitetaan suuntaan 'suunta'
-	(ks kuva.nimeaPiste). Palauttaa pisteen (x, y)."""
+def piste(x, y, nimi = "", suunta = 0, piirra = True):
+	"""Piirtää pisteen (x, y). Nimi kirjoitetaan suuntaan 'suunta' (asteina).
+	Palauttaa pisteen (x, y)."""
 	
 	P = (x, y)
 	if piirra: kuva.piste((x, y), nimi, suunta)
 	
 	return P
 
-def leikkauspiste(X, Y, nimi = "", suunta = (1, 0), valinta = 0, piirra = True):
+def leikkauspiste(X, Y, nimi = "", suunta = 0, valinta = 0, piirra = True):
 	"""Toimii kuten funktio piste, mutta pisteen paikka määräytyy kahdesta
 	geometrisesta oliosta X ja Y (suora, jana, puolisuora, ympyrä ...). Jos
 	leikkauspisteitä on useampia, 'valinta'-parametri (arvo 0, 1, ...) määrää
@@ -104,12 +104,10 @@ def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
 	nimi piirretään kohtaan 'kohta' (asteina ympyrän kaarella), 'puoli' kertoo
 	kummalle puolelle. Palauttaa ympyräolion."""
 	
-	rad = pi * kohta / 180
-	
 	if(piirra):
 		kuvaaja.piirraParametri(
 			lambda t: keskipiste[0] + sade * cos(t), lambda t: keskipiste[1] + sade * sin(t),
-			0, 2 * pi, nimi, rad
+			0, 2 * pi, nimi, pi * kohta / 180, kohta + 180 * int(puoli)
 		)
 	
 	return {"tyyppi": "ympyra", "keskipiste": keskipiste, "sade": sade}

@@ -155,7 +155,7 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	
 	return ret
 
-def piirraParametri(x, y, a = 0, b = 1, nimi = "", kohta = None, suunta = (1, 0)):
+def piirraParametri(x, y, a = 0, b = 1, nimi = "", kohta = None, suunta = 0):
 	"""Piirrä parametrikäyrä (x(t), y(t)), kun t käy läpi välin [a, b].
 	x ja y voivat olla funktioita tai merkkijonokuvauksia t:n funktiosta.
 	Esimerkiksi paraabeli välillä [-1, 1] piirretään kutsulla
@@ -216,9 +216,9 @@ def piirraParametri(x, y, a = 0, b = 1, nimi = "", kohta = None, suunta = (1, 0)
 	elif isinstance(kohta, int) or isinstance(kohta, float):
 		kohta = (x(kohta), y(kohta))
 	
-	nimeaPiste(kohta, nimi, suunta[0], suunta[1])
+	nimeaPiste(kohta, nimi, suunta)
 
-def piirra(f, a = None, b = None, nimi = "", kohta = None, suunta = (1, 0)):
+def piirra(f, a = None, b = None, nimi = "", kohta = None, suunta = 0):
 	"""Piirrä funktion f kuvaaja (f joko funktio tai x:n funktion
 	merkkijonokuvaus). X-koordinaatti käy läpi välin [a, b], jos jompi kumpi
 	jätetään pois, käytetään X-rajaa. Siis esimerkiksi kuvaajapohjassa ei yleensä
