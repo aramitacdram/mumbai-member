@@ -91,8 +91,8 @@ def suora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True, Ainf = True
 		
 		tila.out.write("\\draw[thick] {} -- {};\n".format(tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
 		
-		suunta = 180 * atan2(-(B[1] - A[1]), B[0] - A[0]) / pi
-		nimeaPiste(interpoloi(A, B, kohta), nimi, suunta + 180 * int(not puoli))
+		suunta = 180 * atan2(B[0] - A[0], -(B[1] - A[1])) / pi
+		nimeaPiste(interpoloi(A, B, kohta), nimi, suunta + 180 * int(puoli))
 	
 	return {"tyyppi": "suora", "A": A, "B": B}
 
