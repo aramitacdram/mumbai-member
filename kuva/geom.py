@@ -3,19 +3,23 @@
 import kuva
 from kuva import *
 
+import kuvaaja
+
 def piste(x, y, nimi = "", suunta = (1, 0), piirra = True):
-	"""Luo ja piirrä piste (x, y). Nimi kirjoitetaan suuntaan 'suunta'
-	(ks kuva.nimeaPiste). Mikäli 'piirra' on False, piste jätetään piirtämättä.
-	Palauttaa pisteen (x, y)."""
+	"""Piirtää pisteen (x, y). Nimi kirjoitetaan suuntaan 'suunta'
+	(ks kuva.nimeaPiste). Palauttaa pisteen (x, y)."""
 	
 	P = (x, y)
 	if piirra: kuva.piste((x, y), nimi, suunta)
 	
 	return P
 
-def leikkauspiste(X, Y, nimi = "", suunta = (1, 0), piirra = True):
+def leikkauspiste(X, Y, nimi = "", suunta = (1, 0), valinta = 0, piirra = True):
 	"""Toimii kuten funktio piste, mutta pisteen paikka määräytyy kahdesta
-	geometrisesta oliosta X ja Y (suora, jana, puolisuora, ...)."""
+	geometrisesta oliosta X ja Y (suora, jana, puolisuora, ympyrä ...). Jos
+	leikkauspisteitä on useampia, 'valinta'-parametri (arvo 0, 1, ...) määrää
+	mikä niistä valitaan. Samalla kuvalla valinnan pitäisi toimia aina samalla
+	tavalla."""
 	
 	if(X["tyyppi"] == "suora" and Y["tyyppi"] == "suora"):
 		x1 = float(X["A"][0])
@@ -31,35 +35,39 @@ def leikkauspiste(X, Y, nimi = "", suunta = (1, 0), piirra = True):
 		
 		x = x1 + t * (x2 - x1)
 		y = y1 + t * (y2 - y1)
+	elif(X["tyyppi"] == "suora" and Y["tyyppi"] == "ympyra"):
+		U = float(X["A"][0])
+		V = float(X["A"][1])
+		u = float(X["B"][0]) - U
+		v = float(X["B"][1]) - V
+		a = float(Y["keskipiste"][0])
+		b = float(Y["keskipiste"][1])
+		r = float(Y["sade"])
+		A = u**2 + v**2
+		B = 2 * u * (U - a) + 2 * v * (V - b)
+		C = (U - a)**2 + (V - b)**2 - r**2
 		
+		sign = -1
+		if(valinta % 2 == 0):
+			sign = sign = 1
+		
+		t = (-B + sign * sqrt(B**2 - 4 * A * C)) / (2 * A)
+		
+		x = U + t * u
+		y = V + t * v
+	elif(X["tyyppi"] == "ympyra" and Y["tyyppi"] == "suora"):
+		return leikkauspiste(Y, X, nimi, suunta, valinta, piirra)
 	else:
 		raise ValueError("leikauspiste: en osaa laskea näiden olioiden leikkauspistettä.")
 	
 	return piste(x, y, nimi, suunta, piirra)
 
-def rajoitaLaatikkoon(A, B):
-	"""Laske puolisuoran AB leikkauspisteen rajoittavan laatikon kanssa kohta."""
-	A = (float(A[0]), float(A[1]))
-	B = (float(B[0]), float(B[1]))
-	
-	t = float("inf")
-	if(A[0] < B[0] and tila.asetukset["maxX"] != float("inf")):
-		t = min(t, (tila.asetukset["maxX"] - A[0]) / (B[0] - A[0]))
-	if(A[0] > B[0] and tila.asetukset["minX"] != float("inf")):
-		t = min(t, (tila.asetukset["minX"] - A[0]) / (B[0] - A[0]))
-	if(A[1] < B[1] and tila.asetukset["maxY"] != float("inf")):
-		t = min(t, (tila.asetukset["maxY"] - A[1]) / (B[1] - A[1]))
-	if(A[1] > B[1] and tila.asetukset["minY"] != float("inf")):
-		t = min(t, (tila.asetukset["minY"] - A[1]) / (B[1] - A[1]))
-	
-	return t
-
 def suora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True, Ainf = True, Binf = True):
-	"""Luo ja piirtää suoran/puolisuoran/janan joka kulkee pisteiden A ja B kautta.
+	"""Piirtää suoran/puolisuoran/janan joka kulkee pisteiden A ja B kautta.
 	Nimi kirjoitetaan kohtaan 'kohta', missä A on kohdassa 0 ja B kohdassa 1.
 	'puoli'-parametri määrää kummalle puolelle suoraa nimi merkitään. Jos parametri
 	'Ainf' on true, suoran A:n puoleinen osa on rajoittamaton, vastaavasti 'Binf'.
-	Mikäli 'piirra' on False, suora jätetään piirtämättä. Palautaa suoraolion."""
+	Palautaa suoraolion."""
 	
 	if(A == B): B = (B[0] + 0.01, B[1])
 	
@@ -91,3 +99,17 @@ def puolisuora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True):
 	
 	return suora(A, B, nimi, kohta, puoli, piirra, False, True)
 
+def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
+	"""Piirtää ympyrän keskipisteenä 'keskipiste' ja säteenä 'sade'. Ympyrän
+	nimi piirretään kohtaan 'kohta' (asteina ympyrän kaarella), 'puoli' kertoo
+	kummalle puolelle. Palauttaa ympyräolion."""
+	
+	rad = pi * kohta / 180
+	
+	if(piirra):
+		kuvaaja.piirraParametri(
+			lambda t: keskipiste[0] + sade * cos(t), lambda t: keskipiste[1] + sade * sin(t),
+			0, 2 * pi, nimi, rad
+		)
+	
+	return {"tyyppi": "ympyra", "keskipiste": keskipiste, "sade": sade}
