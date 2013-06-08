@@ -118,3 +118,40 @@ def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
 		)
 	
 	return {"tyyppi": "ympyra", "keskipiste": keskipiste, "sade": sade}
+
+def etaisyys(A, B):
+	"""Laske etäisyys pisteestä A pisteeseen B."""
+	
+	dx = B[0] - A[0]
+	dy = B[1] - A[1]
+	return sqrt(dx**2 + dy**2)
+
+def ymparipiirrettyYmpyra(A, B, C, nimi = "", kohta = 0, puoli = True, piirra = True):
+	"""Sama kuin 'ympyra', mutta ympyräksi valitaan kolmion ABC ympäripiirretty
+	ympyrä."""
+	
+	ax = float(A[0])
+	ay = float(A[1])
+	bx = float(B[0])
+	by = float(B[1])
+	cx = float(C[0])
+	cy = float(C[1])
+	
+	# TODO: simplify
+	x = 0.5 * (
+			-ay*bx*bx+bx*bx*cy-by*cy*cy+by*ay*ay+ay*cx*cx-by*by*ay
+			-by*cx*cx+ax*ax*by-cy*ay*ay+by*by*cy-ax*ax*cy+cy*cy*ay
+		) / (
+			ax*by-ax*cy-ay*bx+ay*cx+bx*cy-by*cx
+		)
+	y = -0.5 * (
+			-ax*bx*bx-ax*by*by+ax*cx*cx+ax*cy*cy+ax*ax*bx-ax*ax*cx
+			+ay*ay*bx-ay*ay*cx-bx*cx*cx-bx*cy*cy+bx*bx*cx+by*by*cx
+		) / (
+			ax*by-ax*cy-ay*bx+ay*cx+bx*cy-by*cx
+		)
+	
+	keskipiste = (x, y)
+	sade = etaisyys(keskipiste, A)
+	
+	ympyra(keskipiste, sade, nimi, kohta, puoli, piirra)
