@@ -22,6 +22,7 @@ def pohja(a, b, leveys = None, nimi = "", n = 1, varaa_tila = True):
 	# Siirrytään lukusuorien koordinaatistoon.
 	skaalaaX(float(leveys) / (b - a))
 	skaalaaY(1.3)
+	siirraX(-a)
 	siirraY(0.5)
 	
 	# Pakotetaan bounding boxi ottamaan mukaan koko alue.
