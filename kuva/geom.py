@@ -114,7 +114,7 @@ def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
 	if(piirra):
 		kuvaaja.piirraParametri(
 			lambda t: keskipiste[0] + sade * cos(t), lambda t: keskipiste[1] + sade * sin(t),
-			0, 2 * pi, nimi, pi * kohta / 180, kohta + 180 * int(puoli)
+			0, 2 * pi, nimi, pi * kohta / 180, kohta + 180 * int(not puoli)
 		)
 	
 	return {"tyyppi": "ympyra", "keskipiste": keskipiste, "sade": sade}
