@@ -154,4 +154,9 @@ def ymparipiirrettyYmpyra(A, B, C, nimi = "", kohta = 0, puoli = True, piirra = 
 	keskipiste = (x, y)
 	sade = etaisyys(keskipiste, A)
 	
-	ympyra(keskipiste, sade, nimi, kohta, puoli, piirra)
+	return ympyra(keskipiste, sade, nimi, kohta, puoli, piirra)
+
+def ympyranKeskipiste(w, nimi = "", suunta = 0, piirra = True):
+	"""Toimii kuten funktio piste, mutta valitsee pisteeksi ympyrän w keskipisteen."""
+	
+	return piste(w["keskipiste"][0], w["keskipiste"][1], nimi, suunta, piirra)
