@@ -184,7 +184,7 @@ def kulma(A, B, C, nimi = "", monista = 1, piirra = True):
 		sade = min(max(0.35 / kulmap, 0.5), 3)
 		
 		with oletusasetukset():
-			paksuus(0.6)
+			paksuus(0.45)
 			for i in range(monista):
 				kuvaaja.piirraParametri(
 					lambda t: Bp[0] + sade * cos(t), lambda t: Bp[1] + sade * sin(t),
