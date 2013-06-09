@@ -213,3 +213,26 @@ def kulma(A, B, C, nimi = "", monista = 1, piirra = True):
 		
 	
 	return {"tyyppi": kulma, "alkukulma": alkukulma, "loppukulma": loppukulma}
+
+def suorakulma(A, B, piirra = True):
+	"""Piirtää suoran kulman pisteeseen B siten että oikea kylki on kohti A:tä."""
+	
+	if piirra:
+		Ap = muunna(A)
+		Bp = muunna(B)
+		
+		d = etaisyys(Ap, Bp)
+		u = 0.3 * (Ap[0] - Bp[0]) / d
+		v = 0.3 * (Ap[1] - Bp[1]) / d
+		
+		paksuus = "{}pt".format(tikzLuku(0.45 * tila.haePaksuus()))
+		tila.out.write("\\draw[line width={}] {} -- {} -- {};\n".format(
+			paksuus,
+			tikzPiste(vekSumma(Bp, (u, v))),
+			tikzPiste(vekSumma(Bp, (u - v, u + v))),
+			tikzPiste(vekSumma(Bp, (-v, u)))
+		))
+	
+	alkukulma = atan2(A[1] - B[1], A[0] - B[0])
+	loppukulma = alkukulma + pi / 2
+	return {"tyyppi": kulma, "alkukulma": alkukulma, "loppukulma": loppukulma}
