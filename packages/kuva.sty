@@ -13,6 +13,7 @@
 
 \newcommand{\naytaKuva}[1]{
 	\immediate\write18{python ../commons/kuva/luo_kuvaskripti.py kuva-tmp-skripti--#1.py kuva-tmp-skripti.py}
+	\immediate\write18{python ../commons/kuva/poista_vanha_output.py}
 	\immediate\write18{python kuva-tmp-skripti.py}
 	\input{kuva-tmp-output.txt}
 }
@@ -25,6 +26,7 @@
 {
 	\endVerbatimOut
 	\immediate\write18{python ../commons/kuva/luo_kuvaskripti.py kuva-tmp-skripti--nimetonKuva.py kuva-tmp-skripti.py}
+	\immediate\write18{python ../commons/kuva/poista_vanha_output.py}
 	\immediate\write18{python kuva-tmp-skripti.py}
 	\input{kuva-tmp-output.txt}
 }
