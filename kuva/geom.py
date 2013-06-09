@@ -65,6 +65,16 @@ def leikkauspiste(X, Y, nimi = "", suunta = 0, valinta = 0, piirra = True):
 	
 	return piste(x, y, nimi, suunta, piirra)
 
+def projektio(P, s, nimi = "", suunta = 0, piirra = True):
+	"""Piirtää pisteen P projektion suoralle s."""
+	
+	u = float(s["B"][0] - s["A"][0])
+	v = float(s["B"][1] - s["A"][1])
+	
+	t = (u * (P[0] - s["A"][0]) + v * (P[1] - s["A"][1])) / (u**2 + v**2)
+	proj = interpoloi(s["A"], s["B"], t)
+	return piste(proj[0], proj[1], nimi, suunta, piirra)
+
 def suora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True, Ainf = True, Binf = True):
 	"""Piirtää suoran/puolisuoran/janan joka kulkee pisteiden A ja B kautta.
 	Nimi kirjoitetaan kohtaan 'kohta', missä A on kohdassa 0 ja B kohdassa 1.
