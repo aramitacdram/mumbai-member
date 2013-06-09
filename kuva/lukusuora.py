@@ -29,7 +29,7 @@ def pohja(a, b, leveys = None, nimi = "", n = 1, varaa_tila = True):
 	if varaa_tila:
 		alku = muunna((a, -0.5))
 		loppu = muunna((a, n - 0.5))
-		tila.out.write("\\draw[opacity=0] {} -- {};".format(tikzPiste(alku), tikzPiste(loppu)))
+		tila.out.write("\\draw[opacity=0] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
 	
 	# Tallennetaan asetuksiin ympäristön tiedot.
 	tila.asetukset['lukusuora_n'] = n

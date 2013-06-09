@@ -182,6 +182,31 @@ def rajaa(minX = None, maxX = None, minY = None, maxY = None):
 	
 	return ret
 
+def varaaRajaus():
+	"""Varmista, että kuva käyttää ainakin koko nykyisen rajauksen. Kuvan on
+	oltava rajattu sekä X- että Y-suunnassa."""
+	
+	def finite(x):
+		return x != float("inf") and x != float("-inf")
+	
+	def valitse(a, b):
+		if finite(a): return a
+		return b
+	
+	x1 = valitse(tila.asetukset['minX'], tila.asetukset['maxX'])
+	x2 = valitse(tila.asetukset['maxX'], tila.asetukset['minX'])
+	y1 = valitse(tila.asetukset['minY'], tila.asetukset['maxY'])
+	y2 = valitse(tila.asetukset['maxY'], tila.asetukset['minY'])
+	
+	if not finite(x1) or not finite(x2) or not finite(y1) or not finite(y2):
+		raise ValueError("varaaRajaus: Kuvaa ei ole rajattu sekä X- että Y-suunnassa.")
+	
+	alku = muunna((x1, y1))
+	loppu = muunna((x2, y2))
+	tila.out.write("\\draw[opacity=0] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
+	
+	return AsetusPalautin()
+
 def vari(uusivari):
 	"""Aseta piirrossa käytettävä väri annettuun TiKZ-värikuvaukseen."""
 	
