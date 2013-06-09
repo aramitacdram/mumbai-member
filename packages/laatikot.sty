@@ -76,7 +76,7 @@
 
 \newcommand{\laatikko}[2][]{%
   \begin{mdframed}[style=laatikkotyyli]
-  \ifthenelse{\equal{#1}{}}{#2}{\textbf{#1}\\ \\ #2}%
+  \ifthenelse{\equal{#1}{}}{#2}{\begin{Large}\textbf{#1}\end{Large}\\ #2}%
   \end{mdframed}
 }
 
