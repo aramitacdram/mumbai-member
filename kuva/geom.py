@@ -107,6 +107,16 @@ def puolisuora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True):
 	
 	return suora(A, B, nimi, kohta, puoli, piirra, False, True)
 
+def suoraSuuntaan(A, u, v, nimi = "", kohta = 0.5, puoli = True, piirra = True):
+	"""Piirtää suoran A:sta suuntaan (u, v)."""
+	
+	return suora(A, (A[0] + u, A[1] + v), nimi, kohta, puoli, piirra)
+
+def puolisuoraSuuntaan(A, u, v, nimi = "", kohta = 0.5, puoli = True, piirra = True):
+	"""Piirtää puolisuoran A:sta suuntaan (u, v)."""
+	
+	return puolisuora(A, (A[0] + u, A[1] + v), nimi, kohta, puoli, piirra)
+
 def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
 	"""Piirtää ympyrän keskipisteenä 'keskipiste' ja säteenä 'sade'. Ympyrän
 	nimi piirretään kohtaan 'kohta' (asteina ympyrän kaarella), 'puoli' kertoo
@@ -162,6 +172,14 @@ def ympyranKeskipiste(w, nimi = "", suunta = 0, piirra = True):
 	"""Toimii kuten funktio piste, mutta valitsee pisteeksi ympyrän w keskipisteen."""
 	
 	return piste(w["keskipiste"][0], w["keskipiste"][1], nimi, suunta, piirra)
+
+def ympyranKehapiste(w, kohta, nimi = "", suunta = 0, piirra = True):
+	"""Piirtää ympyrän w kehäpisteen kohtaan 'kohta' asteina."""
+	
+	kohta = pi * kohta / 180
+	sade = w["sade"]
+	
+	return piste(w["keskipiste"][0] + sade * cos(kohta), w["keskipiste"][1] + sade * sin(kohta), nimi, suunta, piirra)
 
 def kulma(A, B, C, nimi = "", monista = 1, piirra = True):
 	"""Piirtää kulman ABC. Kulma piirretään 'monista'-kertaisena. Palauttaa
