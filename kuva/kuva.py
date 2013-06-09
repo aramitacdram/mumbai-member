@@ -154,6 +154,15 @@ def skaalaa(kerroin):
 	
 	return ret
 
+def oletusasetukset():
+	"""Palauttaa oletusasetukset."""
+	
+	ret = AsetusPalautin()
+	
+	tila.asetukset = tila.oletusasetukset.copy()
+	
+	return ret
+
 def rajaa(minX = None, maxX = None, minY = None, maxY = None):
 	"""Aseta X- tai Y-koordinaattien piirtoja rajaavia ala- ja ylärajoja."""
 	

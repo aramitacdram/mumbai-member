@@ -6,8 +6,7 @@ out = None
 # Datatiedostojen juokseva numerointi.
 data_id = 0
 
-# Nykyiset piirtoasetukset.
-asetukset = {
+oletusasetukset = {
 	'minX': float("-inf"), # X-alaraja.
 	'maxX': float("inf"), # X-yläraja.
 	'minY': float("-inf"), # Y-alaraja.
@@ -17,6 +16,9 @@ asetukset = {
 	'piirtovari': "black", # Piirrossa käytettävä TiKZ-väri.
 	'piirtopaksuus': 1, # Piirrossa käytettävä viivan paksuus.
 }
+
+# Nykyiset piirtoasetukset.
+asetukset = oletusasetukset.copy()
 
 def haePaksuus():
 	"""Hae nykyinen viivan paksuus pt:nä."""

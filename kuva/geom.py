@@ -89,7 +89,8 @@ def suora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True, Ainf = True
 		else:
 			Bp = B
 		
-		tila.out.write("\\draw[thick] {} -- {};\n".format(tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
+		paksuus = "{}pt".format(tikzLuku(0.75 * tila.haePaksuus()))
+		tila.out.write("\\draw[line width={}] {} -- {};\n".format(paksuus, tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
 		
 		suunta = 180 * atan2(B[0] - A[0], -(B[1] - A[1])) / pi
 		nimeaPiste(interpoloi(A, B, kohta), nimi, suunta + 180 * int(puoli))
@@ -112,10 +113,11 @@ def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
 	kummalle puolelle. Palauttaa ympyräolion."""
 	
 	if(piirra):
-		kuvaaja.piirraParametri(
-			lambda t: keskipiste[0] + sade * cos(t), lambda t: keskipiste[1] + sade * sin(t),
-			0, 2 * pi, nimi, pi * kohta / 180, kohta + 180 * int(not puoli)
-		)
+		with paksuus(0.75):
+			kuvaaja.piirraParametri(
+				lambda t: keskipiste[0] + sade * cos(t), lambda t: keskipiste[1] + sade * sin(t),
+				0, 2 * pi, nimi, pi * kohta / 180, kohta + 180 * int(not puoli)
+			)
 	
 	return {"tyyppi": "ympyra", "keskipiste": keskipiste, "sade": sade}
 
@@ -160,3 +162,36 @@ def ympyranKeskipiste(w, nimi = "", suunta = 0, piirra = True):
 	"""Toimii kuten funktio piste, mutta valitsee pisteeksi ympyrän w keskipisteen."""
 	
 	return piste(w["keskipiste"][0], w["keskipiste"][1], nimi, suunta, piirra)
+
+def kulma(A, B, C, nimi = "", monista = 1, piirra = True):
+	"""Piirtää kulman ABC. Kulma piirretään 'monista'-kertaisena. Palauttaa
+	kulmaolion."""
+	
+	alkukulma = atan2(A[1] - B[1], A[0] - B[0])
+	loppukulma = atan2(C[1] - B[1], C[0] - B[0])
+	if(loppukulma < alkukulma): loppukulma += 2 * pi
+	
+	if piirra:
+		Ap = muunna(A)
+		Bp = muunna(B)
+		Cp = muunna(C)
+		alkukulmap = atan2(Ap[1] - Bp[1], Ap[0] - Bp[0])
+		loppukulmap = atan2(Cp[1] - Bp[1], Cp[0] - Bp[0])
+		if(loppukulmap < alkukulmap): loppukulmap += 2 * pi
+		valikulmap = 0.5 * (alkukulmap + loppukulmap)
+		
+		kulmap = loppukulmap - alkukulmap
+		sade = min(max(0.35 / kulmap, 0.5), 3)
+		
+		with oletusasetukset():
+			paksuus(0.6)
+			for i in range(monista):
+				kuvaaja.piirraParametri(
+					lambda t: Bp[0] + sade * cos(t), lambda t: Bp[1] + sade * sin(t),
+					alkukulmap, loppukulmap, nimi, valikulmap, 180 * valikulmap / pi
+				)
+				nimi = ""
+				sade -= 0.04
+		
+	
+	return {"tyyppi": kulma, "alkukulma": alkukulma, "loppukulma": loppukulma}
