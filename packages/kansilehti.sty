@@ -1,30 +1,27 @@
 \ProvidesPackage{../commons/packages/kansilehti}
 
+\usepackage{fontspec}
+
+\newfontface\titlepagefontI[Scale=3.0]{Raleway-Light.otf}
+\newfontface\titlepagefontII[Scale=2.5]{Raleway-Light.otf}
+\newfontface\titlepagefontIII[Scale=1.5]{Raleway-Light.otf}
+\newfontface\titlepagefontIV[Scale=1.0]{Raleway-SemiBold.otf}
+
 \newcommand{\kansilehti}[1]{
 \begin{titlepage}
-\vspace*{2.5cm}
+\vspace*{3.6cm}
 
 \begin{center}
     \sffamily
     \begin{doublespace}
-        \begin{Huge}
-            Vapaa matikka \\
-        \end{Huge}
-        \vspace*{0.5cm}
-        \begin{LARGE}
-            \kurssinTunnus \;
-            \kurssinNimi
-        \end{LARGE}
-
-        \vspace*{0.8cm}
-        \begin{normalsize}
-            \begin{quote}
-                \sitaatti \\
-                \begin{small}
-                    \textit{\sitaatinLahde}
-                \end{small}
-            \end{quote}
-        \end{normalsize}
+        {\titlepagefontI Vapaa matikka} \\
+        \vspace*{0.6cm}
+        {\titlepagefontII \kurssinTunnus \; \kurssinNimi}
+        \vspace*{1.2cm}
+        \begin{quote}
+            {\titlepagefontIII \sitaatti} \\
+            {\titlepagefontIV \sitaatinLahde}
+        \end{quote}
         \vfill
     \end{doublespace}
 \end{center}
@@ -37,8 +34,7 @@
     \sffamily
     $\vcenter{\hbox{\includegraphics[scale=0.3]{../commons/logo/cc.pdf}}}$
     $\vcenter{\hbox{\includegraphics[scale=0.3]{../commons/logo/by.pdf}}}$
-    Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\
-    #1
+    {\titlepagefontIV Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\ #1}
 \end{flushright}
 \end{titlepage}
 

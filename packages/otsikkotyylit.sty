@@ -2,7 +2,10 @@
 
 \usepackage{fontspec}
 
-%\newfontfamily\chapterfont
+\newfontface\chapterfontI[Scale=2.3]{Raleway-ExtraLight.otf}
+\newfontface\chapterfontII[Scale=1.3]{Raleway-ExtraLight.otf}
+\newfontface\sectionfont[Scale=1.6]{Raleway-ExtraLight.otf}
+\newfontface\subsectionfont[Scale=1.4]{Raleway-ExtraLight.otf}
 
 \titlespacing*{\chapter}{0pt}{0pt}{*18}
 \titlespacing*{\section}{0pt}{8ex}{*4}
@@ -19,20 +22,26 @@
 \renewcommand{\chaptertitlename}{Luku}
 
 \titleformat{\chapter}[display]
-{\sffamily\fontseries{l}\fontsize{25}{19}\selectfont}
-{\sffamily\fontsize{14}{10}\selectfont\MakeUppercase{\chaptertitlename}\ \thechapter}
+{\chapterfontI}
+{\chapterfontII\MakeUppercase{\chaptertitlename}\ \thechapter}
 {2pt}
 {}
 
+%\titleformat{\chapter}[display]
+%{\sffamily\fontseries{l}\fontsize{25}{19}\selectfont}
+%{\sffamily\fontsize{14}{10}\selectfont\MakeUppercase{\chaptertitlename}\ \thechapter}
+%{2pt}
+%{}
+
 \titleformat{\section}[hang]
-{\sffamily\fontsize{18}{12}\selectfont\filleft}
+{\sectionfont\filleft}
 {\thesection}
 {0.5em}
 {\MakeUppercase}
 [\vspace{0.5ex}{\titlerule[1pt]}]
 
 \titleformat{\subsection}
-{\sffamily\fontsize{15}{10}\selectfont}
+{\subsectionfont}
 {\thesubsection}
 {1em}
 {}

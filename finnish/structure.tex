@@ -21,30 +21,26 @@
 % in Adobe (Acrobat) Reader and other compliant PDF viewers."
 \usepackage{cmap}
 
-% LuaLaTeX
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text}
-
 % "Extended conditional commands"
 \usepackage{xifthen}
 
-% Yleisimmät erikoismerkit, kuten copyleft
+% XeLaTeX
+\usepackage[mathcal]{euler}
+\usepackage[cm-default]{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{GFS Neohellenic} % note: italics not in use
+
+% Erikoismerkit yms.
 \usepackage{textcomp}
+\usepackage{texnames}
 
 % AMS & matematiikka
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage[psamsfonts]{amssymb}
-\usepackage{amsxtra}
-\usepackage{amscd}
 \usepackage{amsthm}
-\usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{latexsym}
-
-% Fontti := Utopia Regular with Fourier
-\usepackage{fourier}
 
 % Otsikoiden säätelyyn
 \usepackage{titlesec}
@@ -52,7 +48,8 @@
 % Dataa ulkoasusta, komento \pagevalues
 \usepackage{layouts}
 
-\usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
+\usepackage[protrusion=true,verbose=true]{microtype}
+%\usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 \makeatletter
 \g@addto@macro\verbatim{\pdfprotrudechars=0 \pdfadjustspacing=0\relax}
@@ -94,7 +91,7 @@
 \usepackage[obeyspaces,spaces,hyphens,T1]{url}
 
 % Helpottaa TeX:iin liittyvien nimien ladontaa (LaTeX, BibTeX jne.)
-\usepackage{texnames}
+
 
 % TikZ-paketti
 \usepackage{pgf,tikz}
@@ -263,6 +260,8 @@
 
 \begin{document}
 
+\urlstyle{same}
+
 \newdateformat{finshortdate}{\THEDAY.\THEMONTH.\THEYEAR}
 \selectlanguage{finnish}
 \finshortdate
@@ -289,7 +288,7 @@
 \newpage
 \input{../commons/finnish/project}
 \tableofcontents
-\addtocontents{toc}{\vspace*{-75pt}} % move start of toc higher on page
+\addtocontents{toc}{\vspace*{-50pt}} % move start of toc higher on page
 \input{chapters} % incl. Opensolutionfile, Closesolutionfile
 \input{appendices}
 
