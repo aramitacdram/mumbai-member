@@ -1,7 +1,8 @@
 \ProvidesPackage{../commons/packages/otsikkotyylit}
 
-%\titleformat{\part}
-%  {\normalfont\filright\Huge\bfseries\rmfamily}{Osa \thepart}{1em}{}
+\usepackage{fontspec}
+
+%\newfontfamily\chapterfont
 
 \titlespacing*{\chapter}{0pt}{0pt}{*18}
 \titlespacing*{\section}{0pt}{8ex}{*4}
@@ -31,20 +32,19 @@
 [\vspace{0.5ex}{\titlerule[1pt]}]
 
 \titleformat{\subsection}
-{\sffamily\fontsize{15}{10}\selectfont}{\thesubsection}{1em}{}
+{\sffamily\fontsize{15}{10}\selectfont}
+{\thesubsection}
+{1em}
+{}
 
 \titleformat{\subsubsection}
-{\bfseries}{\thesubsubsection}{1em}{}
+{\bfseries}
+{\thesubsubsection}
+{1em}
+{}
 
 \titleformat{\paragraph}[runin]
-{\bfseries}{\theparagraph}{0.2em}{}
-% 
-% \titleformat{\paragraph}[runin]
-%   {\normalfont\normalsize\bfseries\rmfamily}{\theparagraph}{1em}{}
-% 
-% \titleformat{\subparagraph}[runin]
-%   {\normalfont\normalsize\bfseries\rmfamily}{\thesubparagraph}{1em}{}
-
-%% luvut muodosta "Luku N Nimi" muotoon "N Nimi"
-%\addto\captionsfinnish{
-% \renewcommand{\chaptername}{}}
+{\bfseries}
+{\theparagraph}
+{0.2em}
+{}
