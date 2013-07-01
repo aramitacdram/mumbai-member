@@ -215,11 +215,10 @@ def vari(uusivari):
 	return ret
 
 def paksuus(kerroin):
-	"""Aseta käyrien viivanpaksuus alkuperäiseen paksuuteen kerrottuna
-	luvulla 'kerroin'."""
+	"""Kerro piirrossa käytettävää viivan paksuutta kertoimella 'kerroin'."""
 	
 	ret = AsetusPalautin()
-	tila.asetukset['piirtopaksuus'] = kerroin
+	tila.asetukset['piirtopaksuus'] *= kerroin
 	return ret
 
 def palautin():
