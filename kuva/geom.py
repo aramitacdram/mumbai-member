@@ -127,19 +127,24 @@ def puolisuoraSuuntaan(A, u, v, nimi = "", kohta = 0.5, puoli = True, piirra = T
 	
 	return puolisuora(A, (A[0] + u, A[1] + v), nimi, kohta, puoli, piirra)
 
-def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
-	"""Piirtää ympyrän keskipisteenä 'keskipiste' ja säteenä 'sade'. Ympyrän
-	nimi piirretään kohtaan 'kohta' (asteina ympyrän kaarella), 'puoli' kertoo
-	kummalle puolelle. Palauttaa ympyräolion."""
+def kaari(keskipiste, sade, alkukulma, loppukulma, nimi = "", kohta = 0, puoli = True, piirra = True):
+	"""Sama kuin 'ympyra', mutta piirtää vain kaaren kulmasta 'alkukulma' kulmaan 'loppukulma'."""
 	
 	if(piirra):
 		with paksuus(0.75):
 			kuvaaja.piirraParametri(
 				lambda t: keskipiste[0] + sade * cos(t), lambda t: keskipiste[1] + sade * sin(t),
-				0, 2 * pi, nimi, pi * kohta / 180, kohta + 180 * int(not puoli)
+				pi * alkukulma / 180, pi * loppukulma / 180, nimi, pi * kohta / 180, kohta + 180 * int(not puoli)
 			)
 	
 	return {"tyyppi": "ympyra", "keskipiste": keskipiste, "sade": sade}
+
+def ympyra(keskipiste, sade, nimi = "", kohta = 0, puoli = True, piirra = True):
+	"""Piirtää ympyrän keskipisteenä 'keskipiste' ja säteenä 'sade'. Ympyrän
+	nimi piirretään kohtaan 'kohta' (asteina ympyrän kaarella), 'puoli' kertoo
+	kummalle puolelle. Palauttaa ympyräolion."""
+	
+	return kaari(keskipiste, sade, 0, 360, nimi, kohta, puoli, piirra)
 
 def etaisyys(A, B):
 	"""Laske etäisyys pisteestä A pisteeseen B."""
