@@ -2,10 +2,16 @@
 
 \usepackage{fontspec}
 
-\newfontface\titlepagefontI[Scale=3.0]{Raleway-Light.otf}
-\newfontface\titlepagefontII[Scale=2.5]{Raleway-Light.otf}
-\newfontface\titlepagefontIII[Scale=1.5]{Raleway-Light.otf}
-\newfontface\titlepagefontIV[Scale=1.0]{Raleway-SemiBold.otf}
+\newfontface\titlepagefontI[Scale=3.0]{Quattrocento Sans}
+\newfontface\titlepagefontII[Scale=2.5]{Quattrocento Sans}
+\newfontface\titlepagefontIII[Scale=1.5]{Quattrocento Sans}
+\newfontface\titlepagefontIV[Scale=1.0]{Quattrocento Sans}
+
+% a lighter font
+%\newfontface\titlepagefontI[Scale=3.0]{Raleway-Light.otf}
+%\newfontface\titlepagefontII[Scale=2.5]{Raleway-Light.otf}
+%\newfontface\titlepagefontIII[Scale=1.5]{Raleway-Light.otf}
+%\newfontface\titlepagefontIV[Scale=1.0]{Raleway-SemiBold.otf} w/o \bf
 
 \newcommand{\kansilehti}[1]{
 \begin{titlepage}
@@ -20,7 +26,7 @@
         \vspace*{1.2cm}
         \begin{quote}
             {\titlepagefontIII \sitaatti} \\
-            {\titlepagefontIV \sitaatinLahde}
+            {\bf \titlepagefontIV \sitaatinLahde}
         \end{quote}
         \vfill
     \end{doublespace}
@@ -34,7 +40,7 @@
     \sffamily
     $\vcenter{\hbox{\includegraphics[scale=0.3]{../commons/logo/cc.pdf}}}$
     $\vcenter{\hbox{\includegraphics[scale=0.3]{../commons/logo/by.pdf}}}$
-    {\titlepagefontIV Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\ #1}
+    {\bf \titlepagefontIV Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\ #1}
 \end{flushright}
 \end{titlepage}
 
