@@ -24,12 +24,6 @@
 % "Extended conditional commands"
 \usepackage{xifthen}
 
-% XeLaTeX
-\usepackage[mathcal]{euler}
-\usepackage[cm-default]{fontspec}
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Quattrocento}
-
 % Erikoismerkit yms.
 \usepackage{textcomp}
 \usepackage{texnames}
@@ -41,6 +35,12 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{latexsym}
+
+% XeLaTeX
+\usepackage{mathspec}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{Quattrocento}
+\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase]{TeX Gyre Pagella Math}
 
 % Otsikoiden säätelyyn
 \usepackage{titlesec}
