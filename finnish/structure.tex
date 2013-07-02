@@ -11,9 +11,6 @@
 \documentclass[a4paper,onecolumn,11pt,finnish,twoside,final,oldtoc]{boek3}
 \setcounter{secnumdepth}{7}
 
-% OpenSans-fontti
-\usepackage[defaultsans,scale=0.95]{opensans}
-
 % alleviivaus yms
 \usepackage[normalem]{ulem}
 
@@ -48,37 +45,32 @@
 % Dataa ulkoasusta, komento \pagevalues
 \usepackage{layouts}
 
+% XeLaTeX ei toistaiseksi tue 'expansion=true'-optiota
 \usepackage[protrusion=true,verbose=true]{microtype}
-%\usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 \makeatletter
 \g@addto@macro\verbatim{\pdfprotrudechars=0 \pdfadjustspacing=0\relax}
 \makeatother
 
-% Fontit asetettu!
-
 % Loput suometukset (mutta myös enkunkieltä saatetaan tarvita):
 \usepackage[finnish,english]{babel}
-
-% Suometukset asetettu!
 
 % if-then-else-rakenteita helposti
 \usepackage{ifthen}
 
 % Lisää kokomäärityksiä:
-\usepackage[12pt]{moresize}
+\usepackage[11pt]{moresize}
 
-% Tee jotain jokaisen sivun kohdalla:
-% (totpages tarvii tätä)
+% Tee jotain jokaisen sivun kohdalla (totpages tarvitsee tätä):
 \usepackage{everyshi}
 
 % Laskutehtävien suoritusta (geometry-paketti hyötyy tästä):
 \usepackage{calc}
 
 \usepackage[papersize={185mm,240mm},%
-            left=36mm,right=12mm,
-            top=10mm,bottom=25mm,
-            asymmetric,bindingoffset=10mm,
+            left=36mm,right=12mm,%
+            top=10mm,bottom=25mm,%
+            asymmetric,bindingoffset=10mm,%
             marginparwidth=30mm]{geometry}
 
 \reversemarginpar
@@ -90,29 +82,14 @@
 % URL:ien ladonta ja "tavutus"
 \usepackage[obeyspaces,spaces,hyphens,T1]{url}
 
-% Helpottaa TeX:iin liittyvien nimien ladontaa (LaTeX, BibTeX jne.)
-
-
 % TikZ-paketti
 \usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
 
-% Ei sisennetä kappaleen ekaa riviä
-\setlength{\parindent}{0.0cm}
-
-
-\ifpdf % We are running pdftex
-	\pdfcompresslevel=9
-	\pdfpkresolution=1200
-\fi
-
-\theoremstyle{definition}
-\newtheorem{theorem}{Teoreema}
-
 % Tunnisteiden ja sivunumeroiden asettamista varten
 \usepackage{fancyhdr}
 
-% VerbatimOut pythonia varten.
+% VerbatimOut Pythonia varten
 \usepackage{fancyvrb}
 \usepackage{fancybox}
 
@@ -171,10 +148,6 @@
     urlcolor=black            % color of external links
 }
 
-% Kertoo mathtoolsin olevan käytössä. Muuttuu turhaksi, jos LaTeX-pakettienhallinnat saadaan kaikilla kuntoon.
-\newif\iftools
-\toolstrue
-
 % Aika- ja pvmformaattien kustomointiin
 \usepackage{datetime}
 
@@ -191,6 +164,12 @@
 
 % Satunnaista tekstiä
 \usepackage{blindtext}
+
+% Ei sisennetä kappaleen ekaa riviä
+\setlength{\parindent}{0.0cm}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Teoreema}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
