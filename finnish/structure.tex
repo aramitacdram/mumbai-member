@@ -9,7 +9,10 @@
 
 % Luokkamäärittelyt.
 \documentclass[a4paper,onecolumn,11pt,finnish,twoside,final,oldtoc]{boek3}
-\setcounter{secnumdepth}{7}
+\usepackage[papersize={185mm,240mm},left=36mm,right=12mm,top=10mm,bottom=25mm,%
+            asymmetric,bindingoffset=10mm,marginparwidth=30mm]{geometry}
+\reversemarginpar % marginaalit toisin päin
+\setcounter{secnumdepth}{7} % kaikki numeroidaan ilman *-optiota
 
 % alleviivaus yms
 \usepackage[normalem]{ulem}
@@ -52,7 +55,7 @@
 \g@addto@macro\verbatim{\pdfprotrudechars=0 \pdfadjustspacing=0\relax}
 \makeatother
 
-% Loput suometukset (mutta myös enkunkieltä saatetaan tarvita):
+% Babel
 \usepackage[finnish,english]{babel}
 
 % if-then-else-rakenteita helposti
@@ -66,14 +69,6 @@
 
 % Laskutehtävien suoritusta (geometry-paketti hyötyy tästä):
 \usepackage{calc}
-
-\usepackage[papersize={185mm,240mm},%
-            left=36mm,right=12mm,%
-            top=10mm,bottom=25mm,%
-            asymmetric,bindingoffset=10mm,%
-            marginparwidth=30mm]{geometry}
-
-\reversemarginpar
 
 % Riviväli 1,5
 \usepackage{setspace}
@@ -128,24 +123,26 @@
 % Tämä paketti lisää PDF:ään mm. klikattavat linkit sisällysluetteloon
 \usepackage{hyperref}
 \hypersetup{ % from Wikibooks: LaTeX
-    bookmarks=true,           % show bookmarks bar?
-    unicode=false,            % non-Latin characters in Acrobat’s bookmarks
-    pdftoolbar=true,          % show Acrobat’s toolbar?
-    pdfmenubar=true,          % show Acrobat’s menu?
-    pdffitwindow=false,       % window fit to page when opened
-    pdfstartview={FitV},      % fits the width of the page to the window
-    pdftitle={Vapaa matikka}, % title
-    pdfauthor={Avoimet oppimateriaalit ry}, % author
-    pdfsubject={Mathematics}, % subject of the document
-    pdfcreator={Avoimet oppimateriaalit ry}, % creator of the document
-    pdfproducer={Avoimet oppimateriaalit ry}, % producer of the document
-    pdfkeywords={Creative Commons} {textbook} {mathematics}, % list of keywords
-    pdfnewwindow=true,        % links in new window
-    colorlinks=true,          % false: boxed links; true: colored links
-    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
-    citecolor=black,           % color of links to bibliography
-    filecolor=black,           % color of file links
-    urlcolor=black            % color of external links
+    bookmarks=true,								% show bookmarks bar?
+    unicode=false,								% non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,							% show Acrobat’s toolbar?
+    pdfmenubar=true,							% show Acrobat’s menu?
+    pdffitwindow=false,							% window fit to page when opened
+    pdfstartview={FitV},						% fits the width of the page to the window
+    pdftitle={Vapaa matikka},					% title
+    pdfauthor={Avoimet oppimateriaalit ry},		% author
+    pdfsubject={Mathematics},					% subject of the document
+    pdfcreator={Avoimet oppimateriaalit ry},	% creator of the document
+    pdfproducer={Avoimet oppimateriaalit ry},	% producer of the document
+    pdfkeywords={Creative Commons} 
+                {textbook}
+                {mathematics},					% list of keywords
+    pdfnewwindow=true,							% links in new window
+    colorlinks=true,							% false: boxed links; true: colored links
+    linkcolor=black,							% color of internal links (change box color with linkbordercolor)
+    citecolor=black,							% color of links to bibliography
+    filecolor=black,							% color of file links
+    urlcolor=black								% color of external links
 }
 
 % Aika- ja pvmformaattien kustomointiin
