@@ -196,9 +196,10 @@ def ympyranKehapiste(w, kohta, nimi = "", suunta = 0, piirra = True):
 	
 	return piste(w["keskipiste"][0] + sade * cos(kohta), w["keskipiste"][1] + sade * sin(kohta), nimi, suunta, piirra)
 
-def kulma(A, B, C, nimi = "", monista = 1, piirra = True):
-	"""Piirtää kulman ABC. Kulma piirretään 'monista'-kertaisena. Palauttaa
-	kulmaolion."""
+def kulma(A, B, C, nimi = "", monista = 1, kasvata = 0, suunta = None, piirra = True):
+	"""Piirtää kulman ABC. Kulma piirretään 'monista'-kertaisena. Kulmaympyrän
+	sädettä kasvatetaan arvolla 'kasvata' tavallisesta. Nimen merkitsemissuunta
+	valitaan 'suunta'-parametrilla. Palauttaa kulmaolion."""
 	
 	alkukulma = atan2(A[1] - B[1], A[0] - B[0])
 	loppukulma = atan2(C[1] - B[1], C[0] - B[0])
@@ -212,16 +213,19 @@ def kulma(A, B, C, nimi = "", monista = 1, piirra = True):
 		loppukulmap = atan2(Cp[1] - Bp[1], Cp[0] - Bp[0])
 		if(loppukulmap < alkukulmap): loppukulmap += 2 * pi
 		valikulmap = 0.5 * (alkukulmap + loppukulmap)
+		nimip = valikulmap
+		if suunta is not None:
+			nimip = pi * suunta / 180
 		
 		kulmap = loppukulmap - alkukulmap
-		sade = min(max(0.35 / kulmap, 0.5), 3)
+		sade = min(max(0.35 / kulmap, 0.5), 3) + kasvata
 		
 		with oletusasetukset():
 			paksuus(0.45)
 			for i in range(monista):
 				kuvaaja.piirraParametri(
 					lambda t: Bp[0] + sade * cos(t), lambda t: Bp[1] + sade * sin(t),
-					alkukulmap, loppukulmap, nimi, valikulmap, 180 * valikulmap / pi
+					alkukulmap, loppukulmap, nimi, nimip, 180 * nimip / pi
 				)
 				nimi = ""
 				sade -= 0.04
