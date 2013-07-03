@@ -11,6 +11,7 @@
 \documentclass[a4paper,onecolumn,11pt,finnish,twoside,final,oldtoc]{boek3}
 \usepackage[papersize={185mm,240mm},left=36mm,right=12mm,top=10mm,bottom=25mm,%
             asymmetric,bindingoffset=10mm,marginparwidth=30mm]{geometry}
+\usepackage[11pt]{moresize}
 \reversemarginpar % marginaalit toisin päin
 \setcounter{secnumdepth}{7} % kaikki numeroidaan ilman *-optiota
 
@@ -33,7 +34,6 @@
 \usepackage{mathtools}
 \usepackage[psamsfonts]{amssymb}
 \usepackage{amsthm}
-\usepackage{latexsym}
 
 % XeLaTeX
 \usepackage{fourier}
@@ -55,9 +55,6 @@
 
 % if-then-else-rakenteita helposti
 \usepackage{ifthen}
-
-% Lisää kokomäärityksiä:
-\usepackage[11pt]{moresize}
 
 % Tee jotain jokaisen sivun kohdalla (totpages tarvitsee tätä):
 \usepackage{everyshi}
@@ -127,6 +124,7 @@
 % Käännetyt tekstit taulukoita varten
 \usepackage{rotating}
 
+% Taulukot
 \usepackage{array}
 
 % Testailuun, komentoja: \blindtext, \Blindtext, \pagevalues
@@ -224,23 +222,17 @@
     \kansilehti{}
 \fi
 
-\newpage
-\input{commons/finnish/license}
-\newpage
-\input{content/people}
+\newpage \input{commons/finnish/license}
+\newpage \input{content/people}
 
 \ifmikro
     \newpage \input{commons/finnish/donations}
 \fi
 
-\newpage
-\input{commons/finnish/project}
+\newpage \input{commons/finnish/project}
 \tableofcontents
 \addtocontents{toc}{\vspace*{-50pt}} % move start of toc higher on page
 \input{content/content} % incl. Opensolutionfile, Closesolutionfile, appendices
-
-\newpage
-\addcontentsline{toc}{chapter}{Hakemisto}
-\printindex
+\newpage \addcontentsline{toc}{chapter}{Hakemisto} \printindex
 
 \end{document}
