@@ -1,23 +1,20 @@
 \ProvidesPackage{../commons/packages/tehtavat}
 
-% Vanhentunut komento
-\newcommand{\Harjoitustehtavat}{%
-	\newpage
-	\subsection*{Harjoitustehtäviä}%
-	%\addcontentsline{toc}{section}{Harjoitustehtäviä}
-}
+\usepackage{fontspec}
+
+\newfontface\exercisefontI[Scale=1.5,Color=vapaa_matikka_vari_5]{Raleway-Light.otf}
+\newfontface\exercisefontII[Scale=0.9,Color=vapaa_matikka_vari_5]{Raleway-SemiBold.otf}
 
 \AtBeginEnvironment{tehtava}{\begin{minipage}{73mm}}
 \AtEndEnvironment{tehtava}{\end{minipage}}
 
-% Käytä tätä ympäristöä tehtäville
 \newenvironment{tehtavasivu}
 {
   \begin{adjustwidth}{-24mm}{0mm}
   \newpage
 
   \titleformat{\subsection}[hang]
-  {\sffamily\color{vapaa_matikka_vari_5}\fontsize{16}{12}\selectfont}
+  {\exercisefontI}
   {\thesubsection}
   {0.5em}
   {}
@@ -43,7 +40,7 @@
   {3pt}%Space below
   {\fontsize{10.5}{11.5}\selectfont}%Body font
   {0pt}%Indent amount
-  {\bf\sffamily\color{vapaa_matikka_vari_5}\fontsize{9.5}{11.5}\selectfont}% Theorem head font
+  {\exercisefontII}% Theorem head font
   {.}%Punctuation after theorem head
   {2mm}%Space after theorem head 2
   {}%Theorem head spec (can be left empty, meaning ‘normal’)
