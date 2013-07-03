@@ -11,7 +11,6 @@
 \documentclass[a4paper,onecolumn,11pt,finnish,twoside,final,oldtoc]{boek3}
 \usepackage[papersize={185mm,240mm},left=36mm,right=12mm,top=10mm,bottom=25mm,%
             asymmetric,bindingoffset=10mm,marginparwidth=30mm]{geometry}
-\usepackage[11pt]{moresize}
 \reversemarginpar % marginaalit toisin päin
 \setcounter{secnumdepth}{7} % kaikki numeroidaan ilman *-optiota
 
@@ -32,14 +31,16 @@
 
 % AMS & matematiikka
 \usepackage{mathtools}
-\usepackage[psamsfonts]{amssymb}
+\usepackage{amssymb}
 \usepackage{amsthm}
 
 % XeLaTeX
 \usepackage{fourier}
 \usepackage{fontspec}
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Linux Libertine O}
+\setmainfont{Crimson}
+%\setmainfont{Alegreya}
+%\setmainfont{Linux Libertine O}
 %\setmainfont[Scale=0.92]{Heuristica}
 \usepackage[protrusion=true,verbose=true]{microtype} % XeLaTeX ei toistaiseksi tue 'expansion=true'-optiota
 
@@ -193,20 +194,20 @@
 
 % Lisäfontteja
 % Thin - ExtraLight - Light - Regular - Medium - SemiBold - Bold - ExtraBold - Black
-\newfontface\fontI[Scale=3.1]{OpenSans-Light.ttf}
-\newfontface\fontII[Scale=2.3]{OpenSans-Light.ttf}
-\newfontface\fontIII[Scale=1.5]{OpenSans-Light.ttf}
-\newfontface\fontIIIc[Scale=1.5,Color=vapaa_matikka_vari_5]{OpenSans-Light.ttf}
-\newfontface\fontIV[Scale=0.9]{OpenSans-Regular.ttf}
-\newfontface\fontIVc[Scale=0.9,Color=vapaa_matikka_vari_5]{OpenSans-Regular.ttf}
-\newfontface\fontV[Scale=1.2]{OpenSans-Regular.ttf}
-%\newfontface\fontI[Scale=3.1]{Raleway-Light.otf}
-%\newfontface\fontII[Scale=2.3]{Raleway-ExtraLight.otf}
-%\newfontface\fontIII[Scale=1.5]{Raleway-Light.otf}
-%\newfontface\fontIIIc[Scale=1.5,Color=vapaa_matikka_vari_5]{Raleway-Light.otf}
-%\newfontface\fontIV[Scale=0.9]{Raleway-Medium.otf}
-%\newfontface\fontIVc[Scale=0.9,Color=vapaa_matikka_vari_5]{Raleway-Medium.otf}
-%\newfontface\fontV[Scale=1.2]{Raleway-Regular.otf}
+%\newfontface\fontI[Scale=3.1]{OpenSans-Light.ttf}
+%\newfontface\fontII[Scale=2.3]{OpenSans-Light.ttf}
+%\newfontface\fontIII[Scale=1.5]{OpenSans-Light.ttf}
+%\newfontface\fontIIIc[Scale=1.5,Color=vapaa_matikka_vari_5]{OpenSans-Light.ttf}
+%\newfontface\fontIV[Scale=0.9]{OpenSans-Regular.ttf}
+%\newfontface\fontIVc[Scale=0.9,Color=vapaa_matikka_vari_5]{OpenSans-Regular.ttf}
+%\newfontface\fontV[Scale=1.2]{OpenSans-Regular.ttf}
+\newfontface\fontI[Scale=3.1]{Raleway-Light.otf}
+\newfontface\fontII[Scale=2.3]{Raleway-ExtraLight.otf}
+\newfontface\fontIII[Scale=1.5]{Raleway-Light.otf}
+\newfontface\fontIIIc[Scale=1.5,Color=vapaa_matikka_vari_5]{Raleway-Light.otf}
+\newfontface\fontIV[Scale=0.9]{Raleway-Medium.otf}
+\newfontface\fontIVc[Scale=0.9,Color=vapaa_matikka_vari_5]{Raleway-Medium.otf}
+\newfontface\fontV[Scale=1.2]{Raleway-Regular.otf}
 
 \begin{document}
 
