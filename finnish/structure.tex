@@ -166,11 +166,11 @@
 \newcommand{\metasivu}{}
 
 % Hypersetup (metatason pdf-säätöä)
-\input{hypersetup}
+\input{content/hypersetup}
 
 % Omat komennot
-\input{../commons/finnish/constants}
-\input{meta}
+\input{commons/finnish/constants}
+\input{content/meta}
 
 \ifvarit
     \newcommand{\vari}{}
@@ -178,7 +178,7 @@
     \definecolor{vapaa_matikka_vari_4}{cmyk}{1.0,0.42,0.65,0.0} % Esimerkit
     \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.0,0.0} % Tehtävänumerot
 \else
-    \newcommand{\vari}{_bw}
+    \newcommand{\vari}{_grey}
     \definecolor{vapaa_matikka_vari_3}{cmyk}{0.0,0.0,0.0,0.25} % Laatikot
     \definecolor{vapaa_matikka_vari_4}{cmyk}{0.0,0.0,0.0,0.6} % Esimerkit
     \definecolor{vapaa_matikka_vari_5}{cmyk}{0.0,0.0,0.0,0.8} % Tehtävänumerot
@@ -187,7 +187,7 @@
 % Tarvitaan kuvien ja taulukkojen vierekkäin laittamiseen.
 \def\vcent#1{\mathsurround0pt$\vcenter{\hbox{#1}}$}
 
-\input{../commons/packages/index}
+\input{commons/packages/index}
 
 \let\cleardoublepage\clearpage
 
@@ -206,18 +206,19 @@
 \fi
 
 \newpage
-\input{../commons/finnish/license}
-\include{people}
+\input{commons/finnish/license}
+\newpage
+\input{content/people}
 
 \ifmikro
-    \input{../commons/finnish/donations}
+    \newpage \input{commons/finnish/donations}
 \fi
 
 \newpage
-\input{../commons/finnish/project}
+\input{commons/finnish/project}
 \tableofcontents
 \addtocontents{toc}{\vspace*{-50pt}} % move start of toc higher on page
-\input{inside} % incl. Opensolutionfile, Closesolutionfile, appendices
+\input{content/content} % incl. Opensolutionfile, Closesolutionfile, appendices
 
 \newpage
 \addcontentsline{toc}{chapter}{Hakemisto}
