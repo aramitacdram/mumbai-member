@@ -29,27 +29,20 @@
 \usepackage{texnames}
 
 % AMS & matematiikka
-\usepackage{amsmath}
-\usepackage{amsfonts}
+\usepackage{mathtools}
 \usepackage[psamsfonts]{amssymb}
 \usepackage{amsthm}
-\usepackage{mathtools}
 \usepackage{latexsym}
 
 % XeLaTeX
-\usepackage{mathspec}
+\usepackage{fourier}
+\usepackage{fontspec}
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Quattrocento}
-\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase]{Asana Math}
+\setmainfont[Scale=0.92]{Heuristica}
+\usepackage[protrusion=true,verbose=true]{microtype} % XeLaTeX ei toistaiseksi tue 'expansion=true'-optiota
 
 % Otsikoiden säätelyyn
 \usepackage{titlesec}
-
-% Dataa ulkoasusta, komento \pagevalues
-\usepackage{layouts}
-
-% XeLaTeX ei toistaiseksi tue 'expansion=true'-optiota
-\usepackage[protrusion=true,verbose=true]{microtype}
 
 \makeatletter
 \g@addto@macro\verbatim{\pdfprotrudechars=0 \pdfadjustspacing=0\relax}
@@ -134,8 +127,9 @@
 
 \usepackage{array}
 
-% Satunnaista tekstiä
+% Testailuun, komentoja: \blindtext, \Blindtext, \pagevalues
 \usepackage{blindtext}
+\usepackage{layouts}
 
 % Ei sisennetä kappaleen ekaa riviä
 \setlength{\parindent}{0.0cm}
@@ -204,11 +198,6 @@
 \newdateformat{finshortdate}{\THEDAY.\THEMONTH.\THEYEAR}
 \selectlanguage{finnish}
 \finshortdate
-
-\renewcommand{\labelitemi}{$\triangleright$}
-\renewcommand{\labelitemii}{$\triangleright$}
-\renewcommand{\labelitemiii}{$\triangleright$}
-\renewcommand{\labelitemiv}{$\triangleright$}
 
 \ifversio
     \kansilehti{Versio \kirjanVersio \, (\today)}
