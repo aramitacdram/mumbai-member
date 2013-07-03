@@ -1,10 +1,5 @@
 \ProvidesPackage{commons/packages/tehtavat}
 
-\usepackage{fontspec}
-
-\newfontface\exercisefontI[Scale=1.5,Color=vapaa_matikka_vari_5]{Raleway-Light.otf}
-\newfontface\exercisefontII[Scale=0.9,Color=vapaa_matikka_vari_5]{Raleway-SemiBold.otf}
-
 \AtBeginEnvironment{tehtava}{\begin{minipage}{73mm}}
 \AtEndEnvironment{tehtava}{\end{minipage}}
 
@@ -14,7 +9,7 @@
   \newpage
 
   \titleformat{\subsection}[hang]
-  {\exercisefontI}
+  {\fontIIIc}
   {\thesubsection}
   {0.5em}
   {}
@@ -40,7 +35,7 @@
   {3pt}%Space below
   {\fontsize{10.5}{11.5}\selectfont}%Body font
   {0pt}%Indent amount
-  {\exercisefontII}% Theorem head font
+  {\fontIVc}% Theorem head font
   {.}%Punctuation after theorem head
   {2mm}%Space after theorem head 2
   {}%Theorem head spec (can be left empty, meaning ‘normal’)

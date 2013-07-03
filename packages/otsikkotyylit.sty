@@ -1,11 +1,5 @@
 \ProvidesPackage{commons/packages/otsikkotyylit}
 
-\usepackage{fontspec}
-
-\newfontface\chapterfont[Scale=2.3]{Raleway-ExtraLight.otf}
-\newfontface\sectionfont[Scale=1.6]{Raleway-Light.otf}
-\newfontface\subsectionfont[Scale=1.4]{Raleway-Regular.otf}
-
 \titlespacing*{\chapter}{0pt}{0pt}{*18}
 \titlespacing*{\section}{0pt}{8ex}{*4}
 \titlespacing*{\paragraph}{0pt}{0pt}{0.5em}
@@ -21,20 +15,20 @@
 \renewcommand{\chaptertitlename}{Luku}
 
 \titleformat{\chapter}[display]
-{\chapterfont}
-{\subsectionfont\MakeUppercase{\chaptertitlename}\ \thechapter}
+{\fontII}
+{\fontV\MakeUppercase{\chaptertitlename}\ \thechapter}
 {2pt}
 {}
 
 \titleformat{\section}[hang]
-{\sectionfont\filleft}
+{\fontIII\filleft}
 {\thesection}
 {0.5em}
 {\MakeUppercase}
 [\vspace{0.5ex}{\titlerule[1pt]}]
 
 \titleformat{\subsection}
-{\subsectionfont}
+{\fontV}
 {\thesubsection}
 {1em}
 {}

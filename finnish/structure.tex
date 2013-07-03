@@ -174,14 +174,14 @@
 
 \ifvarit
     \newcommand{\vari}{}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.2,0.27,0.0,0.0} % Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.0,0.42,0.65,0.0} % Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.0,0.0} % Tehtävänumerot
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.2,0.27,0.0,0.0}	% Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.0,0.42,0.65,0.0}	% Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.0,0.0}	% Tehtävänumerot
 \else
     \newcommand{\vari}{_grey}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.0,0.0,0.0,0.25} % Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.0,0.0,0.0,0.6} % Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.0,0.0,0.0,0.8} % Tehtävänumerot
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.0,0.0,0.0,0.25}	% Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.0,0.0,0.0,0.6}	% Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.0,0.0,0.0,0.8}	% Tehtävänumerot
 \fi
 
 % Tarvitaan kuvien ja taulukkojen vierekkäin laittamiseen.
@@ -190,6 +190,16 @@
 \input{commons/packages/index}
 
 \let\cleardoublepage\clearpage
+
+% Lisäfontteja
+% Thin - ExtraLight - Light - Regular - Medium - SemiBold - Bold - ExtraBold - Black
+\newfontface\fontI[Scale=3.1]{Raleway-Light.otf}
+\newfontface\fontII[Scale=2.3]{Raleway-ExtraLight.otf}
+\newfontface\fontIII[Scale=1.5]{Raleway-Light.otf}
+\newfontface\fontIIIc[Scale=1.5,Color=vapaa_matikka_vari_5]{Raleway-Light.otf}
+\newfontface\fontIV[Scale=0.9]{Raleway-Medium.otf}
+\newfontface\fontIVc[Scale=0.9,Color=vapaa_matikka_vari_5]{Raleway-Medium.otf}
+\newfontface\fontV[Scale=1.2]{Raleway-Regular.otf}
 
 \begin{document}
 

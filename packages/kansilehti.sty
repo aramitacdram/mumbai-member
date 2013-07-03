@@ -1,24 +1,17 @@
 \ProvidesPackage{commons/packages/kansilehti}
 
-\usepackage{fontspec}
-
-\newfontface\titlepagefontI[Scale=3.0]{Raleway-Light.otf}
-\newfontface\titlepagefontII[Scale=2.5]{Raleway-Thin.otf}
-\newfontface\titlepagefontIII[Scale=1.5]{Raleway-Light.otf}
-\newfontface\titlepagefontIV[Scale=1.0]{Raleway-Medium.otf}
-
 \newcommand{\kansilehti}[1]{
 \begin{titlepage}
 	\vspace*{4.5cm}
 	\begin{center}
 		\begin{doublespace}
-			{\titlepagefontI Vapaa matikka} \\
+			{\fontI Vapaa matikka} \\
 			\vspace*{0.5cm}
-			{\titlepagefontII \kurssinNimi \; (\kurssinTunnus)}
+			{\fontII \kurssinNimi \; (\kurssinTunnus)}
 			\vspace*{1.5cm}
 			\begin{quote}
-				{\titlepagefontIII \sitaatti} \\
-				{\titlepagefontIV \sitaatinLahde}
+				{\fontIII \sitaatti} \\
+				{\fontIV \sitaatinLahde}
 			\end{quote}
 		\end{doublespace}
 		\vfill
@@ -28,7 +21,7 @@
 		\vspace*{1cm}
 		$\vcenter{\hbox{\includegraphics[scale=0.3]{commons/logo/cc.pdf}}}$
 		$\vcenter{\hbox{\includegraphics[scale=0.3]{commons/logo/by.pdf}}}$
-		{\titlepagefontIV Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\ #1}
+		{\fontIV Sisältö on lisensoitu avoimella CC BY 3.0 -lisenssillä. \\ #1}
 	\end{center}
 \end{titlepage}
 \metasivu
