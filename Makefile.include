@@ -20,7 +20,7 @@
 ###
 
 
-PDFOPTS = -shell-escape
+PDFOPTS		= -shell-escape
 PDFLATEX	?= xelatex  $(PDFOPTS)
 BIBTEX		?= bibtex
 
@@ -49,8 +49,8 @@ BIBFILES = $(patsubst %,%.bib,\
 			    -e 's/, */ /g'))
 
 ## Add \input'ed or \include'd files to $(PDFTARGETS) dependencies.
-CONTENTTEX= $(wildcard chapters/*.tex) $(wildcard appendices/*.tex)
-INCLUDEDTEX = $(wildcard ../commons/*.tex) $(CONTENTTEX)
+CONTENTTEX= $(wildcard content/*.tex)
+INCLUDEDTEX = $(wildcard commons/*/*.tex) $(wildcard commons/*/*.sty) $(CONTENTTEX)
 
 ## grab a version number from the repository (if any) that stores this.
 ## * REVISION is the current revision number (short form, for inclusion in text)
