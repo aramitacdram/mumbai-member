@@ -177,7 +177,7 @@ def piirraParametri(x, y, a = 0, b = 1, nimi = "", kohta = None, suunta = 0):
 	
 	t = a
 	viim_t = a # Viimeinen sisäpuolella oleva t:n arvo.
-	dt = (b - a) / 300
+	dt = (b - a) / 3000
 	
 	paksuus = "{}pt".format(tikzLuku(tila.haePaksuus()))
 	vari = tila.asetukset['piirtovari']
