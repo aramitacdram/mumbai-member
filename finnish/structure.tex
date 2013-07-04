@@ -145,16 +145,18 @@
 
 % väreissä vai mustavalkoisena
 % vaatii vastaavat kuvatiedostot
+% default: väreissä
 \newif\ifvarit
 \varittrue
 
 % versionumero kansilehteen
+% default: kyllä
 \newif\ifversio
 \versiotrue
 
 % mikrorahoituskanavat kirjan alkuun
+% default: ei
 \newif\ifmikro
-\mikrotrue
 
 \newcommand{\kurssinTunnus}{}
 \newcommand{\kurssinNimi}{}
@@ -224,7 +226,6 @@
 \fi
 
 \newpage \input{commons/finnish/license}
-\newpage \input{content/people}
 
 \ifmikro
     \newpage \input{commons/finnish/donations}
