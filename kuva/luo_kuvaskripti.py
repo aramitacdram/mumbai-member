@@ -11,7 +11,7 @@ if __name__ == '__main__':
 	
 	outfile.write("from math import *\n")
 	outfile.write("import sys\n")
-	outfile.write("sys.path.append(\"../commons/kuva/\")\n")
+	outfile.write("sys.path.append(\"commons/kuva/\")\n")
 	outfile.write("from kuva import *\n")
 	outfile.write("import kuvaaja\n")
 	outfile.write("import lukusuora\n")
