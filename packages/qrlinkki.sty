@@ -1,21 +1,32 @@
 \ProvidesPackage{commons/packages/qrlinkki}
 
-\usepackage{pst-barcode}
-\usepackage{auto-pst-pdf}
+% http://tex.stackexchange.com/questions/89649/pgf-tikz-qr-code-generator
+
+\RequirePackage{tikz}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning}
+
+\directlua{dofile("commons/qr/luaqrcode.lua")}
+
+\newcommand{\qrcode}[2][10]{%
+	\begin{scope}[qrcode]
+		\directlua{tikzQRCode("#2",#1)}%
+	\end{scope}
+}
+
+\tikzset{
+	qrcode/.style = {line width = 2sp},
+	pixel on/.style = {black},
+	pixel off/.style = {white},
+	pixel err/.style = {red}
+}
 
 % Linkki ja QR-koodi. Parametrit: URL ja kuvaus.
 \newcommand{\qrlinkki}[2]{
-	
-	\begin{minipage}[c]{0.7in}
-		\begin{pspicture}(0.6in,0.6in)
-			\psbarcode{#1}{width=0.6 height=0.6}{qrcode}
-		\end{pspicture}
-		\vspace{0.1in}
-	\end{minipage}
-	\begin{minipage}[l]{\textwidth-0.7in}
-		#2
-		
-		{\scriptsize\url{#1}}
-	\end{minipage}
-	
+	\begin{tikzpicture}[node distance=2mm]
+		\qrcode[1.5]{#1};
+		\node(dummy)[right=of qrcode] {};
+		\node(desc)[above right=of dummy] {\small{#2}};
+		\node(url)[below right=of dummy] {\scriptsize\url{#1}};
+	\end{tikzpicture}
 }
