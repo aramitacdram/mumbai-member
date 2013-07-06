@@ -3,13 +3,18 @@
 \AtBeginEnvironment{tehtava}{\begin{minipage}{73mm}}
 \AtEndEnvironment{tehtava}{\end{minipage}}
 
+\newcommand{\sarjaA}{\subsubsection*{Opi perusteet}}
+\newcommand{\sarjaB}{\subsubsection*{Hallitse kokonaisuus}}
+\newcommand{\sarjaC}{\subsubsection*{Syvennä osaamistasi}}
+\newcommand{\sarjaD}{\subsubsection*{Sekalaisia tehtäviä}}
+
 \newenvironment{tehtavasivu}
 {
   \begin{adjustwidth}{-24mm}{0mm}
   \newpage
 
   \titleformat{\subsection}[hang]
-  {\fontIIIc}
+  {\color{vapaa_matikka_vari_5}\fontIII}
   {\thesubsection}
   {0.5em}
   {}
@@ -26,16 +31,22 @@
   \end{multicols}
   \end{adjustwidth}
 }
+
 % Harjoitustehtävät answers-paketilla
 \Newassociation{vastaus}{Vastaus}{ans}
 \renewenvironment{Vastaus}[1]{\begin{trivlist}\item \textbf{#1.} }{\end{trivlist}} %ulkoasumuutos vastauksiin
+
+%\newcounter{tehtnum}
+%\setcounter{tehtnum}{1}
+
+%\newenvironment{tehtava}[0]{{\fontIV \arabic{tehtnum}.}}{\stepcounter{tehtnum}}
 
 \newtheoremstyle{tehtava}% name
   {3pt}%Space above
   {3pt}%Space below
   {\fontsize{10.5}{11.5}\selectfont}%Body font
   {0pt}%Indent amount
-  {\fontIVc}% Theorem head font
+  {\color{vapaa_matikka_vari_5}\fontIV}% Theorem head font
   {.}%Punctuation after theorem head
   {2mm}%Space after theorem head 2
   {}%Theorem head spec (can be left empty, meaning ‘normal’)
@@ -43,53 +54,3 @@
 \theoremstyle{tehtava}
 \newtheorem{tehtava}{}
 \theoremstyle{plain}
-
-% Ympäristö tehtävän alakohtien listaamiseen.
-% Variantit:
-%   - alakohdat = alakohdat allekkain
-%   - alakohdatrivi = alakohdat vierekkäin
-% Alakohdat lisätään alakohta-komennolla. Esimerkiksi:
-% \begin{alakohdat}
-%   \alakohta{bsd}
-%   \alakohta{asd}
-% \end{alakohdat}
-\newenvironment{alakohdat}
-{
-	\newcommand{\alakohtaTyyppi}{allekkain}
-	\newcommand{\alakohtaKoodi}{}
-	
-}
-{
-	\begin{enumerate}[a)]
-		\alakohtaKoodi
-	\end{enumerate}
-}
-
-\newcounter{alakohtaMonesko}
-
-\newenvironment{alakohdatrivi}
-{
-	\newcommand{\alakohtaTyyppi}{vierekkain}
-	\newcommand{\alakohtaKoodi}{}
-	
-}
-{
-	
-	\setcounter{alakohtaMonesko}{1}
-	\alakohtaKoodi
-	
-}
-
-\newcommand{\alakohta}[1]{
-	\ifthenelse{\equal{\alakohtaTyyppi}{allekkain}} {
-		\expandafter\def\expandafter\alakohtaKoodi\expandafter{\alakohtaKoodi{} \item #1}
-	}{
-		\expandafter\def\expandafter\alakohtaKoodi\expandafter{%
-			\alakohtaKoodi{}%
-			\ifthenelse{\equal{\value{alakohtaMonesko}}{1}}{\hspace{0.52cm}}{\hspace{0.6cm}}%
-			\alph{alakohtaMonesko}) %
-			\addtocounter{alakohtaMonesko}{1}%
-			#1
-		}
-	}
-}
