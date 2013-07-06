@@ -32,12 +32,12 @@
 % XeLaTeX
 \usepackage{fontspec}
 \usepackage{unicode-math}
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Linux Libertine O}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Extension=.otf,UprightFont=*_R,ItalicFont=*_RI,BoldFont=*_RB,BoldItalicFont=*_RBI]{LinLibertine}
 %\setmainfont[Scale=0.92]{Heuristica} % classic
 %\setmainfont{Kameron} % contemporary
 \setmathfont{xits-math.otf}
-\usepackage[protrusion=true,verbose=true]{microtype} % XeLaTeX ei toistaiseksi tue 'expansion=true'-optiota
+\usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 % Otsikoiden säätelyyn
 \usepackage{titlesec}

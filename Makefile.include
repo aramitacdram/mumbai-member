@@ -21,7 +21,7 @@
 
 
 PDFOPTS		= -shell-escape
-PDFLATEX	?= xelatex  $(PDFOPTS)
+PDFLATEX	?= lualatex  $(PDFOPTS)
 BIBTEX		?= bibtex
 
 ## Action for 'make view'
