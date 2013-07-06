@@ -9,6 +9,7 @@
 
 % Luokkamäärittelyt.
 \documentclass[a4paper,onecolumn,11pt,finnish,twoside,final,oldtoc]{boek3}
+\usepackage{calc} % geometry-paketti hyötyy tästä
 \usepackage[papersize={185mm,240mm},left=36mm,right=12mm,top=10mm,bottom=25mm,%
             asymmetric,bindingoffset=10mm,marginparwidth=30mm]{geometry}
 \reversemarginpar % marginaalit toisin päin
@@ -49,14 +50,8 @@
 % Babel
 \usepackage[finnish,english]{babel}
 
-% if-then-else-rakenteita helposti
-\usepackage{ifthen}
-
 % Tee jotain jokaisen sivun kohdalla (totpages tarvitsee tätä):
 \usepackage{everyshi}
-
-% Laskutehtävien suoritusta (geometry-paketti hyötyy tästä):
-\usepackage{calc}
 
 % Riviväli 1,5
 \usepackage{setspace}
@@ -79,8 +74,8 @@
 % Euron merkki
 \usepackage{eurosym}
 
-% Hymiö
-\usepackage{wasysym}
+%% Hymiö
+%\usepackage{wasysym}
 
 % Harjoitustehtävät answers-paketilla
 \usepackage{answers}
@@ -101,8 +96,8 @@
 % Käyttö: väli pilkun jälkeen -> listapilkku; ei väliä pilkun jälkeen -> desimaalipilkku
 \usepackage{icomma}
 
-% Ei-kursivoidut kreikkalaiset aakkoset, esim. $\upmu$
-\usepackage{upgreek}
+%% Ei-kursivoidut kreikkalaiset aakkoset, esim. $\upmu$
+%\usepackage{upgreek}
 
 % Automatisoitu hakemisto
 \usepackage{makeidx}
@@ -123,15 +118,15 @@
 % Taulukot
 \usepackage{array}
 
-% Testailuun, komentoja: \blindtext, \Blindtext, \pagevalues
-\usepackage{blindtext}
-\usepackage{layouts}
+%% Testailuun, komentoja: \blindtext, \Blindtext, \pagevalues
+%\usepackage{blindtext}
+%\usepackage{layouts}
 
 % Ei sisennetä kappaleen ekaa riviä
 \setlength{\parindent}{0.0cm}
 
-\theoremstyle{definition}
-\newtheorem{theorem}{Teoreema}
+%\theoremstyle{definition}
+%\newtheorem{theorem}{Teoreema}
 
 % Lisäattribuutteja \includegraphics-komentoon
 \usepackage{graphicx}
