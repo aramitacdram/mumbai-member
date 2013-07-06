@@ -4,8 +4,6 @@
 
 \pagestyle{fancy}
 
-\newcommand{\alatunnistefontti}{\sffamily\fontsize{9}{7}\selectfont}
-
 \renewcommand{\chaptermark}[1]{%
 \markboth{\chaptertitlename\ \thechapter. #1}{}}
 
@@ -13,15 +11,15 @@
 
 \fancypagestyle{plain}{%
  \fancyhf{}
- \fancyfoot[RO]{{\alatunnistefontti\leftmark}\hspace{1em}\thepage}
- \fancyfoot[LE]{\thepage\hspace{1em}{\alatunnistefontti\leftmark}}
+ \fancyfoot[RO]{{\fontIV\leftmark}\hspace{1em}\thepage}
+ \fancyfoot[LE]{\thepage\hspace{1em}{\fontIV\leftmark}}
  \fancyhfoffset[RO]{0mm}
  \fancyhfoffset[LE]{24mm}
 }
 
 \fancyhf{}
-\fancyfoot[RO]{{\alatunnistefontti\leftmark}\hspace{1em}\thepage}
-\fancyfoot[LE]{\thepage\hspace{1em}{\alatunnistefontti\leftmark}}
+\fancyfoot[RO]{{\fontIV\leftmark}\hspace{1em}\thepage}
+\fancyfoot[LE]{\thepage\hspace{1em}{\fontIV\leftmark}}
 \fancyhfoffset[RO]{0mm}
 \fancyhfoffset[LE]{24mm}
 
@@ -31,7 +29,7 @@
 
 \renewcommand*{\thesection}{\Alph{section}}
 \titleformat{\section}[hang]
-{\sffamily\fontsize{15}{10}\selectfont\filleft}
+{\fontIII\filleft}
 {\thesection} % vaihtoehtoisesti {Liite \thesection}
 {0.5em}
 {\MakeUppercase}
@@ -39,12 +37,12 @@
 
 \fancypagestyle{plain}{%
  \fancyhf{}
- \fancyfoot[RO]{{\sffamily\fontsize{9}{7} Liitteet}\hspace{1em}\thepage}
- \fancyfoot[LE]{\thepage\hspace{1em}{\sffamily\fontsize{9}{7} Liitteet}}
+ \fancyfoot[RO]{{\fontIV Liitteet}\hspace{1em}\thepage}
+ \fancyfoot[LE]{\thepage\hspace{1em}{\fontIV Liitteet}}
 }
 \fancyhf{}
-\fancyfoot[RO]{{\sffamily\fontsize{9}{7} Liitteet}\hspace{1em}\thepage}
-\fancyfoot[LE]{\thepage\hspace{1em}{\sffamily\fontsize{9}{7} Liitteet}}
+\fancyfoot[RO]{{\fontIV Liitteet}\hspace{1em}\thepage}
+\fancyfoot[LE]{\thepage\hspace{1em}{\fontIV Liitteet}}
 
 \setcounter{section}{0}
 }
