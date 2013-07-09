@@ -140,15 +140,6 @@
 \newif\ifvarit
 \varittrue
 
-% versionumero kansilehteen
-% default: kyllä
-\newif\ifversio
-\versiotrue
-
-% mikrorahoituskanavat kirjan alkuun
-% default: ei
-\newif\ifmikro
-
 \newcommand{\kurssinTunnus}{}
 \newcommand{\kurssinNimi}{}
 \newcommand{\sitaatti}{Sitaatti puuttuu.}
@@ -197,31 +188,3 @@
 \input{commons/packages/index}
 
 \let\cleardoublepage\clearpage
-
-\begin{document}
-
-\urlstyle{same}
-
-\newdateformat{finshortdate}{\THEDAY.\THEMONTH.\THEYEAR}
-\selectlanguage{finnish}
-\finshortdate
-
-\ifversio
-    \kansilehti{Versio \kirjanVersio \, (\today)}
-\else
-    \kansilehti{}
-\fi
-
-\newpage \input{commons/finnish/license}
-
-\ifmikro
-    \newpage \input{commons/finnish/donations}
-\fi
-
-\newpage \input{commons/finnish/project}
-\tableofcontents
-\addtocontents{toc}{\vspace*{-50pt}} % move start of toc higher on page
-\input{content} % incl. Opensolutionfile, Closesolutionfile, appendices
-\newpage \addcontentsline{toc}{chapter}{Hakemisto} \printindex
-
-\end{document}

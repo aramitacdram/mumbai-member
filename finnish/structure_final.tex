@@ -1,0 +1,18 @@
+\input{commons/finnish/preamble}
+
+\begin{document}
+
+\urlstyle{same}
+\newdateformat{finshortdate}{\THEDAY.\THEMONTH.\THEYEAR}
+\selectlanguage{finnish}
+\finshortdate
+
+\kansilehti{}
+\newpage \input{commons/finnish/license}
+\newpage \input{commons/finnish/project}
+\tableofcontents
+\addtocontents{toc}{\vspace*{-50pt}} % move start of toc higher on page
+\input{content} % incl. Opensolutionfile, Closesolutionfile, appendices
+\newpage \addcontentsline{toc}{chapter}{Hakemisto} \printindex
+
+\end{document}
