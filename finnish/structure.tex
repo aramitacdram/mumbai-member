@@ -259,6 +259,10 @@
 
 \let\cleardoublepage\clearpage
 
+\usepackage{endnotes}
+\let\footnote=\endnote
+\renewcommand{\notesname}{Huomautukset}
+
 \begin{document}
 
 \newdateformat{finshortdate}{\THEDAY.\THEMONTH.\THEYEAR}
@@ -296,8 +300,22 @@
 \input{chapters} % incl. Opensolutionfile, Closesolutionfile
 \input{appendices}
 
-\newpage
-\addcontentsline{toc}{chapter}{Hakemisto}
+\addcontentsline{toc}{chapter}{Liitteet} \chapter*{Liitteet}
+\addcontentsline{toc}{section}{Huomautukset} \theendnotes
+
+% hakemistosta section
+\makeatletter
+\renewenvironment{theindex}
+               {\twocolumn[\vspace*{\baselineskip}\section*{Hakemisto}]%
+                \@mkboth{HAKEMISTO}{HAKEMISTO}%
+                \thispagestyle{plain}\parindent\z@%
+                \parskip\z@ \@plus .3\p@\relax%
+                \columnseprule \z@%
+                \columnsep 35\p@%
+                \let\item\@idxitem}%
+\makeatother
+
+\addcontentsline{toc}{section}{Hakemisto}
 \printindex
 
 \end{document}
