@@ -172,7 +172,7 @@
     pdftoolbar=true,          % show Acrobat’s toolbar?
     pdfmenubar=true,          % show Acrobat’s menu?
     pdffitwindow=false,       % window fit to page when opened
-    pdfstartview={FitV},      % fits the width of the page to the window
+    pdfstartview={FitH},      % fits the width of the page to the window
     pdftitle={Vapaa matikka}, % title
     pdfauthor={Avoimet oppimateriaalit ry}, % author
     pdfsubject={Mathematics}, % subject of the document
@@ -269,15 +269,10 @@
 \selectlanguage{finnish}
 \finshortdate
 
-\renewcommand{\labelitemi}{$\Box$}
-\renewcommand{\labelitemii}{$\Box$}
-\renewcommand{\labelitemiii}{$\Box$}
-\renewcommand{\labelitemiv}{$\Box$}
-
-%\renewcommand{\labelitemi}{$\bullet$}
-%\renewcommand{\labelitemii}{$\circ$}
-%\renewcommand{\labelitemiii}{$\cdot$}
-%\renewcommand{\labelitemiv}{$\ast$}
+\renewcommand{\labelitemi}{$\cdot$}
+\renewcommand{\labelitemii}{$\cdot$}
+\renewcommand{\labelitemiii}{$\cdot$}
+\renewcommand{\labelitemiv}{$\cdot$}
 
 \ifversio
     \kansilehti{Versio \kirjanVersio \, (\today)}
