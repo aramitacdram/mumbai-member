@@ -75,9 +75,11 @@
 % \makeatother
 
 \newcommand{\laatikko}[2][]{%
+  \medskip
   \begin{mdframed}[style=laatikkotyyli]
   \ifthenelse{\equal{#1}{}}{#2}{\begin{Large}\textbf{#1}\end{Large}\\ #2}%
   \end{mdframed}
+  \medskip
 }
 
 % EI TOIMI:
