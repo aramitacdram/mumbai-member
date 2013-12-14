@@ -15,13 +15,14 @@
 
 \newenvironment{esimerkki}[0]{%
  \addtocounter{esimerkki}{1}%
- \mbox{}\vspace{1.5ex}\marginpar{\raggedleft\sffamily\textcolor{vapaa_matikka_vari_4}{ESIMERKKI\ \thechapter.\theesimerkki}}%
- \vspace*{-3.5ex}%
- \begin{customleftbar}%
+ \raggedright\sffamily\textcolor{vapaa_matikka_vari_4}{ESIMERKKI\ \thechapter.\theesimerkki}%
+ \begin{customleftbar}
+ \rmfamily%
 }
 {%
  \end{customleftbar}%
- \vspace{0.5ex plus 3pt minus 1pt}}
+ \vspace{0.5ex plus 3pt minus 1pt}%
+}
  
 \newenvironment{esimratk}
 {\paragraph*{Ratkaisu.}}{}
