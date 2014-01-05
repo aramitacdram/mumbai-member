@@ -7,17 +7,20 @@
 \selectlanguage{finnish}
 \finshortdate
 
-\kansilehti{Versio \kirjanVersio \, (\today)}
+\kansilehti{Versio \kirjanVersio \, (\today)} % argumentin voi jättää pois
 
 \newpage
 \input{commons/finnish/license}
 
 \newpage
+\input{config/authors}
+
+\newpage
 \input{commons/finnish/project}
 
 \tableofcontents
-\addtocontents{toc}{\vspace*{-50pt}} % move start of toc higher on page
-\input{content} % incl. Opensolutionfile, Closesolutionfile, appendices
+\addtocontents{toc}{\vspace*{-50pt}}
+\input{toc}
 
 \addcontentsline{toc}{section}{Huomautukset}
 \theendnotes

@@ -27,7 +27,19 @@
   \raggedright
 }
 {
-  %\end{flushleft}
+  \end{multicols}
+  \end{adjustwidth}
+  \newpage
+}
+
+\newenvironment{vastaussivu}
+{
+  \begin{adjustwidth}{-24mm}{0mm}
+  \setlength{\columnsep}{7mm}
+  \begin{multicols}{2}
+  \raggedright
+}
+{
   \end{multicols}
   \end{adjustwidth}
 }
@@ -35,11 +47,6 @@
 % Harjoitustehtävät answers-paketilla
 \Newassociation{vastaus}{Vastaus}{ans}
 \renewenvironment{Vastaus}[1]{\begin{trivlist}\item \textbf{#1.} }{\end{trivlist}} %ulkoasumuutos vastauksiin
-
-%\newcounter{tehtnum}
-%\setcounter{tehtnum}{1}
-
-%\newenvironment{tehtava}[0]{{\fontIV \arabic{tehtnum}.}}{\stepcounter{tehtnum}}
 
 \newtheoremstyle{tehtava}% name
   {3pt}%Space above

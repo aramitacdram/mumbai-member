@@ -1,7 +1,5 @@
 \ProvidesPackage{commons/packages/esimerkki}
 
-% \newtheorem{esimerkkitheorem}{Esimerkki}[chapter] %[section]
-% 
 \usepackage{framed}
 
 \newenvironment{customleftbar}{%
@@ -9,19 +7,17 @@
 	\MakeFramed {\advance\hsize-\width \FrameRestore}}%
 {\endMakeFramed}
 
-% uusi esimerkkiympäristö.
-% pystysuora välistys on hoidettu tosi rumasti, koska en saanut marginaalimerkintää toimimaan framed:in kanssa
 \newcounter{esimerkki}
 
 \newenvironment{esimerkki}[0]{%
  \addtocounter{esimerkki}{1}%
- \mbox{}\vspace{1.5ex}\marginpar{\raggedleft\color{vapaa_matikka_vari_4}\fontIV{ESIMERKKI\ \thechapter.\theesimerkki}}%
- \vspace*{-3.5ex}%
+ \raggedright\color{vapaa_matikka_vari_4}{\fontIV{ESIMERKKI\ \thechapter.\theesimerkki}}%
  \begin{customleftbar}%
 }
 {%
  \end{customleftbar}%
- \vspace{0.5ex plus 3pt minus 1pt}}
+ \vspace{0.5ex plus 3pt minus 1pt}%
+}
  
 \newenvironment{esimratk}
 {\paragraph*{Ratkaisu.}}{}
@@ -29,13 +25,3 @@
 \newenvironment{esimvast}
 {\paragraph*{Vastaus.}}{}
  
-% \newenvironment{esimerkki}[0]
-% {
-% 	\vspace{3mm}
-% 	\begin{esimerkkitheorem}
-% 	\begin{customleftbar}
-% }
-% {
-% 	\end{customleftbar}
-% 	\end{esimerkkitheorem}
-% }

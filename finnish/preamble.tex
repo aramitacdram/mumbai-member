@@ -1,28 +1,19 @@
-% Kun käytät tätä, älä lataa pakettia stfloats tai fix2col. Tämä lataa
-% myös paketin fixltx2e.
-%% "When the new output routine for LaTeX3 is done, this package will
-%% be obsolete. The sooner the better..."
-\RequirePackage{dblfloatfix}
+% "When the new output routine for LaTeX3 is done, this package will be obsolete. The sooner the better..."
+\RequirePackage{dblfloatfix} % älä lataa: stfloats, fix2col; sisältää: fixltx2e
+\RequirePackage{fix-cm} % ei tarvita: type1cm, type1ec
 
-% Kun käytät tätä, et enää tarvitse paketteja type1cm ja type1ec:
-\RequirePackage{fix-cm}
-
-% Luokkamäärittelyt.
 \documentclass[a4paper,onecolumn,11pt,finnish,twoside,final,oldtoc]{boek3}
 \usepackage{calc} % geometry-paketti hyötyy tästä
-\usepackage[papersize={185mm,240mm},left=36mm,right=12mm,top=10mm,bottom=25mm,%
+\usepackage[papersize={185mm,240mm},
+            left=26mm,right=22mm,
+            top=15mm,bottom=20mm,%
             asymmetric,bindingoffset=10mm,marginparwidth=30mm]{geometry}
 \reversemarginpar % marginaalit toisin päin
 \setcounter{secnumdepth}{7} % kaikki numeroidaan ilman *-optiota
 
-% alleviivaus yms
-\usepackage[normalem]{ulem}
-
-% "Extended conditional commands"
-\usepackage{xifthen}
-
-% Erikoismerkit yms.
-\usepackage{texnames}
+\usepackage[normalem]{ulem} % alleviivaus ym.
+\usepackage{xifthen} % if-else
+\usepackage{texnames} % erikoismerkit ym.
 
 % AMS & matematiikka
 \usepackage{mathtools}
@@ -34,10 +25,14 @@
 \usepackage{fontspec}
 \usepackage{unicode-math}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont[Extension=.otf,UprightFont=*_R,ItalicFont=*_RI,BoldFont=*_RB,BoldItalicFont=*_RBI]{LinLibertine}
-%\setmainfont[Scale=0.92]{Heuristica} % classic
-%\setmainfont{Kameron} % contemporary
+\setmainfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyretermes}
+\setsansfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyreadventor}
 \setmathfont{xits-math.otf}
+\newfontface\fontI[Scale=3.1]{texgyreadventor-regular.otf}
+\newfontface\fontII[Scale=2.3]{texgyreadventor-regular.otf}
+\newfontface\fontIII[Scale=1.5]{texgyreadventor-regular.otf}
+\newfontface\fontIV[Scale=0.9]{texgyreadventor-regular.otf}
+\newfontface\fontV[Scale=1.2]{texgyreadventor-regular.otf}
 \usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 % Otsikoiden säätelyyn
@@ -47,20 +42,12 @@
 \g@addto@macro\verbatim{\pdfprotrudechars=0 \pdfadjustspacing=0\relax}
 \makeatother
 
-% Babel
 \usepackage[finnish,english]{babel}
+\usepackage{everyshi} % totpages vaatii
+\usepackage{setspace} % rivivälin säätöön
+\onehalfspacing % riviväli 1,5
+\usepackage[obeyspaces,spaces,hyphens,T1]{url} % URL:ien ladonta ja "tavutus"
 
-% Tee jotain jokaisen sivun kohdalla (totpages tarvitsee tätä):
-\usepackage{everyshi}
-
-% Riviväli 1,5
-\usepackage{setspace}
-\onehalfspacing
-
-% URL:ien ladonta ja "tavutus"
-\usepackage[obeyspaces,spaces,hyphens,T1]{url}
-
-% TikZ-paketti
 \usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
 
@@ -71,17 +58,9 @@
 \usepackage{fancyvrb}
 \usepackage{fancybox}
 
-% Euron merkki
-\usepackage{eurosym}
-
-%% Hymiö
-%\usepackage{wasysym}
-
-% Harjoitustehtävät answers-paketilla
-\usepackage{answers}
-
-% Cancel-paketti supistamista ym. varten
-\usepackage{cancel}
+\usepackage{eurosym} % euron merkki
+\usepackage{answers} % harjoitustehtäviä varten
+\usepackage{cancel} % supistaminen ym.
 
 % Monipalstainen sisältö esim. lyhyille tehtäville
 % Käyttö: \begin{multicols}{n}
@@ -89,34 +68,24 @@
 %         \end{multicols}
 \usepackage{multicol}
 
-% Tuki numeroiduille listoille
-\usepackage{enumerate}
+\usepackage{enumerate} % numeroidut listat
 
 % Desimaalipilkut
 % Käyttö: väli pilkun jälkeen -> listapilkku; ei väliä pilkun jälkeen -> desimaalipilkku
 \usepackage{icomma}
 
-%% Ei-kursivoidut kreikkalaiset aakkoset, esim. $\upmu$
-%\usepackage{upgreek}
-
 % Automatisoitu hakemisto
 \usepackage{makeidx}
 \makeindex
 
-% Aika- ja pvmformaattien kustomointiin
-\usepackage{datetime}
-
-% Täältä saa komennon \ifthispageodd
-\usepackage{scrextend}
+\usepackage{datetime} % kustomoidut aika- ja päivämääräformaatit
+\usepackage{scrextend} % komento \ifthispageodd
 
 % Marginaalien muuttaminen harjoitustehtäväsivuja varten
 \usepackage[strict]{changepage}
 
-% Käännetyt tekstit taulukoita varten
-\usepackage{rotating}
-
-% Taulukot
-\usepackage{array}
+\usepackage{rotating} % käännetyt tekstit taulukoita varten
+\usepackage{array} % taulukot
 
 %% Testailuun, komentoja: \blindtext, \Blindtext, \pagevalues
 %\usepackage{blindtext}
@@ -125,11 +94,7 @@
 % Ei sisennetä kappaleen ekaa riviä
 \setlength{\parindent}{0.0cm}
 
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Teoreema}
-
-% Lisäattribuutteja \includegraphics-komentoon
-\usepackage{graphicx}
+\usepackage{graphicx} % lisäattribuutteja \includegraphics-komentoon
 
 % allaolevia loogisia muuttujia voi muuttaa meta.tex-tiedostossa
 % esim. \varitfalse
@@ -158,32 +123,18 @@
 
 \ifvarit
     \newcommand{\vari}{}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.2,0.27,0.0,0.0}	% Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.0,0.42,0.65,0.0}	% Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.0,0.0}	% Tehtävänumerot
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.20,0.27,0.00,0.00}	% Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.00,0.42,0.65,0.00}	% Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.00,0.00}	% Tehtävänumerot
 \else
     \newcommand{\vari}{_grey}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.0,0.0,0.0,0.25}	% Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.0,0.0,0.0,0.6}	% Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.0,0.0,0.0,0.8}	% Tehtävänumerot
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.00,0.00,0.00,0.25}	% Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.00,0.00,0.00,0.25}	% Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.00,0.00,0.00,0.80}	% Tehtävänumerot
 \fi
 
 % Tarvitaan kuvien ja taulukkojen vierekkäin laittamiseen.
 \def\vcent#1{\mathsurround0pt$\vcenter{\hbox{#1}}$}
-
-% Lisäfontteja
-\newfontface\fontI[Scale=3.1]{OpenSans-Light.ttf}
-\newfontface\fontII[Scale=2.3]{OpenSans-Light.ttf}
-\newfontface\fontIII[Scale=1.5]{OpenSans-Light.ttf}
-\newfontface\fontIV[Scale=0.9]{OpenSans-Regular.ttf}
-\newfontface\fontV[Scale=1.2]{OpenSans-Regular.ttf}
-% contemporary
-% (Thin - ExtraLight - Light - Regular - Medium - SemiBold - Bold - ExtraBold - Black)
-%\newfontface\fontI[Scale=3.1]{Raleway-Light.otf}
-%\newfontface\fontII[Scale=2.3]{Raleway-ExtraLight.otf}
-%\newfontface\fontIII[Scale=1.5]{Raleway-Light.otf}
-%\newfontface\fontIV[Scale=0.9]{Raleway-Medium.otf}
-%\newfontface\fontV[Scale=1.2]{Raleway-Regular.otf}
 
 \input{commons/packages/index}
 
