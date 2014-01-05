@@ -10,9 +10,48 @@
             asymmetric,bindingoffset=10mm,marginparwidth=30mm]{geometry}
 \reversemarginpar % marginaalit toisin päin
 \setcounter{secnumdepth}{7} % kaikki numeroidaan ilman *-optiota
+\usepackage{xifthen} % if-else
+
+%-----
+
+% allaolevia loogisia muuttujia voi muuttaa meta.tex-tiedostossa
+% esim. \varitfalse
+
+% väreissä vai mustavalkoisena
+% vaatii vastaavat kuvatiedostot
+% default: väreissä
+\newif\ifvarit
+\varittrue
+
+% lualatex käytössä?
+% default: ei
+\newif\iflua
+\luafalse
+
+% keskeneräinen versio?
+% default: on
+\newif\ifdraft
+\drafttrue
+
+% yksisarakkeiset vastaussivut?
+% default: ei
+\newif\iflevea
+\leveafalse
+
+\newcommand{\kurssinTunnus}{}
+\newcommand{\kurssinNimi}{}
+\newcommand{\sitaatti}{Sitaatti puuttuu.}
+\newcommand{\sitaatinLahde}{}
+\newcommand{\kirjanVersio}{}
+\newcommand{\kirjanPainopaikka}{}
+\newcommand{\kirjanVastaavuus}{}
+\newcommand{\metasivu}{}
+
+\input{config/meta}
+
+%-----
 
 \usepackage[normalem]{ulem} % alleviivaus ym.
-\usepackage{xifthen} % if-else
 \usepackage{texnames} % erikoismerkit ym.
 
 % AMS & matematiikka
@@ -96,30 +135,11 @@
 
 \usepackage{graphicx} % lisäattribuutteja \includegraphics-komentoon
 
-% allaolevia loogisia muuttujia voi muuttaa meta.tex-tiedostossa
-% esim. \varitfalse
-
-% väreissä vai mustavalkoisena
-% vaatii vastaavat kuvatiedostot
-% default: väreissä
-\newif\ifvarit
-\varittrue
-
-\newcommand{\kurssinTunnus}{}
-\newcommand{\kurssinNimi}{}
-\newcommand{\sitaatti}{Sitaatti puuttuu.}
-\newcommand{\sitaatinLahde}{}
-\newcommand{\kirjanVersio}{}
-\newcommand{\kirjanPainopaikka}{}
-\newcommand{\kirjanVastaavuus}{}
-\newcommand{\metasivu}{}
-
 % Hypersetup (metatason pdf-säätöä)
 \input{config/hypersetup}
 
 % Omat komennot
 \input{commons/finnish/constants}
-\input{config/meta}
 
 \ifvarit
     \newcommand{\vari}{}

@@ -7,7 +7,11 @@
 \selectlanguage{finnish}
 \finshortdate
 
-\kansilehti{Versio \kirjanVersio \, (\today)} % argumentin voi jättää pois
+\ifdraft
+	\kansilehti{Versio \kirjanVersio \, (\today)}
+\else
+	\kansilehti{}
+\fi
 
 \newpage
 \input{commons/finnish/license}
@@ -17,6 +21,11 @@
 
 \newpage
 \input{commons/finnish/project}
+
+\ifdraft
+	\newpage
+	\input{commons/finnish/donations}
+\fi
 
 \tableofcontents
 \addtocontents{toc}{\vspace*{-50pt}}

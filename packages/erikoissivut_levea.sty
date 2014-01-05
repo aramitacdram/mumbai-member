@@ -1,0 +1,51 @@
+\ProvidesPackage{commons/packages/erikoissivut_levea}
+
+\newenvironment{tehtavasivu}
+{
+  \newpage
+
+  \titleformat{\subsection}[hang]
+  {\color{vapaa_matikka_vari_5}\fontIII}
+  {\thesubsection}
+  {0.5em}
+  {}
+  [\vspace{0.5mm}{\titlerule[0.5pt]}]
+
+  \subsection*{Tehtäviä}%
+  %\addcontentsline{toc}{section}{Tehtäviä}
+  \raggedright
+}
+{
+  \newpage
+}
+
+\newenvironment{kotitehtavasivu}
+{
+  \newpage
+
+  \titleformat{\subsection}[hang]
+  {\color{vapaa_matikka_vari_5}\fontIII}
+  {\thesubsection}
+  {0.5em}
+  {}
+  [\vspace{0.5mm}{\titlerule[0.5pt]}]
+
+  \subsection*{Kotitehtäviä}%
+  %\addcontentsline{toc}{section}{Kotitehtäviä}
+  \raggedright
+}
+{
+  \newpage
+}
+
+\newenvironment{vastaussivu}
+{
+  \begin{adjustwidth}{-24mm}{0mm}
+  \setlength{\columnsep}{7mm}
+  \begin{multicols}{2}
+  \raggedright
+}
+{
+  \end{multicols}
+  \end{adjustwidth}
+}
