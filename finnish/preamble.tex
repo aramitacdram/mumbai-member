@@ -17,26 +17,23 @@
 % allaolevia loogisia muuttujia voi muuttaa meta.tex-tiedostossa
 % esim. \varitfalse
 
-% väreissä vai mustavalkoisena
-% vaatii vastaavat kuvatiedostot
+% mustavalkoinen? (vaatii vastaavat kuvatiedostot)
 % default: väreissä
-\newif\ifvarit
-\varittrue
+\newif\ifgrey
 
 % lualatex käytössä?
 % default: ei
 \newif\iflua
-\luafalse
 
-% keskeneräinen versio?
-% default: on
-\newif\ifdraft
-\drafttrue
+% valmis?
+% default: ei
+\newif\iffinal
 
 % yksisarakkeiset vastaussivut?
-% default: ei
-\newif\iflevea
-\leveafalse
+% default: kaksisarakkeiset
+\newif\ifsingle
+
+\input{config/options}
 
 % -----
 
@@ -162,16 +159,16 @@
 % Omat komennot
 \input{commons/finnish/constants}
 
-\ifvarit
+\ifgrey
+    \newcommand{\vari}{_grey}
+    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.00,0.00,0.00,0.25}   % Laatikot
+    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.00,0.00,0.00,0.25}   % Esimerkit
+    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.00,0.00,0.00,0.80}   % Tehtävänumerot
+\else
     \newcommand{\vari}{}
     \definecolor{vapaa_matikka_vari_3}{cmyk}{0.20,0.27,0.00,0.00}	% Laatikot
     \definecolor{vapaa_matikka_vari_4}{cmyk}{1.00,0.42,0.65,0.00}	% Esimerkit
     \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.00,0.00}	% Tehtävänumerot
-\else
-    \newcommand{\vari}{_grey}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.00,0.00,0.00,0.25}	% Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.00,0.00,0.00,0.25}	% Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.00,0.00,0.00,0.80}	% Tehtävänumerot
 \fi
 
 % Tarvitaan kuvien ja taulukkojen vierekkäin laittamiseen.

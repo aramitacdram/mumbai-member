@@ -7,10 +7,10 @@
 \selectlanguage{finnish}
 \finshortdate
 
-\ifdraft
-	\kansilehti{Versio \kirjanVersio \, (\today)}
-\else
+\iffinal
 	\kansilehti{}
+\else
+	\kansilehti{Versio \kirjanVersio \, (\today)}
 \fi
 
 \newpage
@@ -22,7 +22,8 @@
 \newpage
 \input{commons/finnish/project}
 
-\ifdraft
+\iffinal
+\else
 	\newpage
 	\input{commons/finnish/donations}
 \fi
