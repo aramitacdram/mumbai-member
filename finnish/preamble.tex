@@ -38,18 +38,7 @@
 \newif\iflevea
 \leveafalse
 
-\newcommand{\kurssinTunnus}{}
-\newcommand{\kurssinNimi}{}
-\newcommand{\sitaatti}{Sitaatti puuttuu.}
-\newcommand{\sitaatinLahde}{}
-\newcommand{\kirjanVersio}{}
-\newcommand{\kirjanPainopaikka}{}
-\newcommand{\kirjanVastaavuus}{}
-\newcommand{\metasivu}{}
-
-\input{config/meta}
-
-%-----
+% -----
 
 \usepackage[normalem]{ulem} % alleviivaus ym.
 \usepackage{texnames} % erikoismerkit ym.
@@ -77,7 +66,8 @@
     \usepackage[utf8]{inputenc}
     \usepackage[T1]{fontenc}
     \usepackage{tgadventor}
-    \usepackage{mathptmx}
+    \usepackage{tgtermes} % mathptmx ongelmainen
+    \usepackage{newtxmath}
     \usepackage[11pt]{moresize}
     \pdfcompresslevel=9
     \pdfpkresolution=1200
@@ -85,10 +75,25 @@
     \newcommand{\fontIII}{\sffamily\fontsize{20}{13}\selectfont}
     \newcommand{\fontIV}{\sffamily\fontsize{9}{7}\selectfont}
     \newcommand{\fontV}{\sffamily\fontsize{15}{10}\selectfont}
-    \newcommand{\fontVI}\sffamily\fontsize{16}{12}\selectfont}
+    \newcommand{\fontVI}{\sffamily\fontsize{16}{12}\selectfont}
 \fi
 
 \usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
+
+% -----
+
+\newcommand{\kurssinTunnus}{}
+\newcommand{\kurssinNimi}{}
+\newcommand{\sitaatti}{Sitaatti puuttuu.}
+\newcommand{\sitaatinLahde}{}
+\newcommand{\kirjanVersio}{}
+\newcommand{\kirjanPainopaikka}{}
+\newcommand{\kirjanVastaavuus}{}
+\newcommand{\metasivu}{}
+
+\input{config/meta}
+
+%-----
 
 % Otsikoiden säätelyyn
 \usepackage{titlesec}
