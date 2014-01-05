@@ -59,19 +59,31 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
-% LuaLaTeX
 \usepackage{cmap}
-\usepackage{fontspec}
-\usepackage{unicode-math}
-\defaultfontfeatures{Ligatures=TeX}
-\setmainfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyretermes}
-\setsansfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyreadventor}
-\setmathfont{xits-math.otf}
-\newfontface\fontI[Scale=3.1]{texgyreadventor-regular.otf}
-\newfontface\fontII[Scale=2.3]{texgyreadventor-regular.otf}
-\newfontface\fontIII[Scale=1.5]{texgyreadventor-regular.otf}
-\newfontface\fontIV[Scale=0.9]{texgyreadventor-regular.otf}
-\newfontface\fontV[Scale=1.2]{texgyreadventor-regular.otf}
+
+\iflua % LuaLaTeX
+    \usepackage{fontspec}
+    \usepackage{unicode-math}
+    \defaultfontfeatures{Ligatures=TeX}
+    \setmainfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyretermes}
+    \setsansfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyreadventor}
+    \setmathfont{xits-math.otf}
+    \newfontface\fontII[Scale=2.3]{texgyreadventor-regular.otf}
+    \newfontface\fontIII[Scale=1.5]{texgyreadventor-regular.otf}
+    \newfontface\fontIV[Scale=0.9]{texgyreadventor-regular.otf}
+    \newfontface\fontV[Scale=1.2]{texgyreadventor-regular.otf}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{tgadventor}
+    \usepackage{mathptmx}
+    \usepackage[11pt]{moresize}
+    \pdfcompresslevel=9
+    \pdfpkresolution=1200
+
+    \newcommand{\fontIV}{\sffamily\fontsize{9}{7}\selectfont}
+\fi
+
 \usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 % Otsikoiden säätelyyn
