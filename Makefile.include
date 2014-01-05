@@ -86,7 +86,7 @@ view: $(PDFTARGETS)
 	$(PDFVIEWER) $(PDFTARGETS)
 
 $(TARGET).ind: $(CONTENTTEX)
-	makeindex $(TARGET)
+	texindy $(TARGET).idx
 
 # define a \Revision{} command you can include in your document's preamble.
 # especially useful with e.g. drafthead.sty or fancyhdr.
