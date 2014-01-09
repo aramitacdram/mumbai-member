@@ -1,5 +1,7 @@
 \ProvidesPackage{commons/packages/otsikkotyylit}
 
+\usepackage{textcase} % \MakeTextUppercase
+
 \titlespacing*{\chapter}{0pt}{0pt}{*18}
 \titlespacing*{\section}{0pt}{8ex}{*4}
 \titlespacing*{\paragraph}{0pt}{0pt}{0.5em}
@@ -16,7 +18,7 @@
 
 \titleformat{\chapter}[display]
 {\fontII}
-{\fontV\MakeUppercase{\chaptertitlename}\ \thechapter}
+{\fontV\MakeTextUppercase{\chaptertitlename}\ \thechapter}
 {2pt}
 {}
 
@@ -31,7 +33,7 @@
 {\fontV}
 {\thesubsection}
 {1em}
-{\MakeUppercase}
+{\MakeTextUppercase}
 
 \titleformat{\subsubsection}
 {\bfseries}
