@@ -7,11 +7,7 @@
 \selectlanguage{finnish}
 \finshortdate
 
-\iffinal
-	\kansilehti{}
-\else
-	\kansilehti{Versio \kirjanVersio \, (\today)}
-\fi
+\kansilehti{Tehtävien vastauksia, v. 0.80 / 8.1.14}
 
 \newpage
 \input{commons/finnish/license}
@@ -22,21 +18,8 @@
 \newpage
 \input{commons/finnish/project}
 
-\iffinal
-\else
-	\newpage
-	\input{commons/finnish/donations}
-\fi
-
 \tableofcontents
 \addtocontents{toc}{\vspace*{-50pt}}
 \input{toc}
-
-\addcontentsline{toc}{section}{Huomautukset}
-\theendnotes
-
-\newpage
-\addcontentsline{toc}{section}{Hakemisto}
-\printindex
 
 \end{document}
