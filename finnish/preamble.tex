@@ -21,10 +21,6 @@
 % default: väreissä
 \newif\ifgrey
 
-% lualatex käytössä?
-% default: ei
-\newif\iflua
-
 % valmis?
 % default: ei
 \newif\iffinal
@@ -37,44 +33,24 @@
 
 % -----
 
+% LuaLaTeX
 \usepackage[normalem]{ulem} % alleviivaus ym.
 \usepackage{texnames} % erikoismerkit ym.
-
-% AMS & matematiikka
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{amsthm}
-
 \usepackage{cmap}
-
-\iflua % LuaLaTeX
-    \usepackage{fontspec}
-    \usepackage{unicode-math}
-    \defaultfontfeatures{Ligatures=TeX}
-    \setmainfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyretermes}
-    \setsansfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyreadventor}
-    \setmathfont{xits-math.otf}
-    \newfontface\fontII[Scale=2.3]{texgyreadventor-regular.otf}
-    \newfontface\fontIII[Scale=1.8]{texgyreadventor-regular.otf}
-    \newfontface\fontIV[Scale=0.8]{texgyreadventor-regular.otf}
-    \newfontface\fontV[Scale=1.4]{texgyreadventor-regular.otf}
-    \newfontface\fontVI[Scale=1.5]{texgyreadventor-regular.otf}
-\else
-    \usepackage[utf8]{inputenc}
-    \usepackage[T1]{fontenc}
-    \usepackage{tgadventor}
-    \usepackage{tgtermes} % mathptmx ongelmainen
-    \usepackage{newtxmath}
-    \usepackage[11pt]{moresize}
-    \pdfcompresslevel=9
-    \pdfpkresolution=1200
-    \newcommand{\fontII}{\sffamily\fontseries{l}\fontsize{25}{19}\selectfont}
-    \newcommand{\fontIII}{\sffamily\fontsize{20}{13}\selectfont}
-    \newcommand{\fontIV}{\sffamily\fontsize{9}{7}\selectfont}
-    \newcommand{\fontV}{\sffamily\fontsize{15}{10}\selectfont}
-    \newcommand{\fontVI}{\sffamily\fontsize{16}{12}\selectfont}
-\fi
-
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyretermes}
+\setsansfont[Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,BoldFont=*-bold,BoldItalicFont=*-bolditalic]{texgyreadventor}
+\setmathfont{xits-math.otf}
+\newfontface\fontII[Scale=2.3]{texgyreadventor-regular.otf}
+\newfontface\fontIII[Scale=1.8]{texgyreadventor-regular.otf}
+\newfontface\fontIV[Scale=0.8]{texgyreadventor-regular.otf}
+\newfontface\fontV[Scale=1.4]{texgyreadventor-regular.otf}
+\newfontface\fontVI[Scale=1.5]{texgyreadventor-regular.otf}
 \usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 % -----
