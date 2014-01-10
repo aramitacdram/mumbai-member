@@ -1,3 +1,7 @@
+-- http://tex.stackexchange.com/questions/89649/pgf-tikz-qr-code-generator
+-- CC-BY-SA 3.0
+-- JLDiaz
+
 qrencode = dofile("commons/qr/qrencode.lua")
 
 local function matrix_to_tikz( tab , size)
