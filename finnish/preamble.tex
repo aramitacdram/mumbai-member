@@ -29,6 +29,10 @@
 % default: kaksisarakkeiset
 \newif\ifsingle
 
+% endnotes pois käytöstä?
+% default: endnotes käytössä
+\newif\ifnonotes
+
 \input{config/options}
 
 % -----
@@ -154,9 +158,12 @@
 
 \let\cleardoublepage\clearpage
 
-\usepackage{endnotes}
-\let\footnote=\endnote
-\renewcommand{\notesname}{Huomautukset}
+\ifnonotes
+\else
+    \usepackage{endnotes}
+    \let\footnote=\endnote
+    \renewcommand{\notesname}{Huomautukset}
+\fi
 
 % hakemistosta section
 \makeatletter

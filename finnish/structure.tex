@@ -32,8 +32,11 @@
 \addtocontents{toc}{\vspace*{-50pt}}
 \input{toc}
 
-\addcontentsline{toc}{section}{Huomautukset}
-\theendnotes
+\ifnonotes
+\else
+	\addcontentsline{toc}{section}{Huomautukset}
+	\theendnotes
+\fi
 
 \newpage
 \addcontentsline{toc}{section}{Hakemisto}
