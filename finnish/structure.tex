@@ -7,25 +7,28 @@
 \selectlanguage{finnish}
 \finshortdate
 
-\iffinal
-	\kansilehti{}
+\ifcsname skipHeader\endcsname
 \else
-	\kansilehti{Versio \kirjanVersio \, (\today)}
-\fi
+	\iffinal
+		\kansilehti{}
+	\else
+		\kansilehti{Versio \kirjanVersio \, (\today)}
+	\fi
 
-\newpage
-\input{commons/finnish/license}
-
-\newpage
-\input{config/authors}
-
-\newpage
-\input{commons/finnish/project}
-
-\iffinal
-\else
 	\newpage
-	\input{commons/finnish/donations}
+	\input{commons/finnish/license}
+
+	\newpage
+	\input{config/authors}
+
+	\newpage
+	\input{commons/finnish/project}
+
+	\iffinal
+	\else
+		\newpage
+		\input{commons/finnish/donations}
+	\fi
 \fi
 
 \tableofcontents
