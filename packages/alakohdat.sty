@@ -1,49 +1,34 @@
 \ProvidesPackage{commons/packages/alakohdat}
 
-% Ympäristö tehtävän ja esimerkkien alakohtien listaamiseen.
-% Variantit:
-%   - alakohdat = alakohdat allekkain
-%   - alakohdatrivi = alakohdat vierekkäin
-% Alakohdat lisätään alakohta-komennolla. Esimerkiksi:
-% \begin{alakohdat}
-%   \alakohta{bsd}
-%   \alakohta{asd}
-% \end{alakohdat}
+% Ympäristöjä listoille:
+% - alakohdat: tehtävien, esimerkkien ja vastausten alakohdat: a), b), c), ... (vrt. enumerate a)-optiolla)
+% - vaiheet: ratkaisun vaiheet ym.: 1., 2., 3., ... (vrt. enumerate)
+% - luettelo: vapaamuotoiset listat: ei numerointia (vrt. itemize)
+% - tekijät: varattu tekijöiden listaukseen, ulkoasu saattaa muuttua
+% Huom! "alakohdat vierekkäin" -variantti poistettu
 
-\newenvironment{alakohdat}
-{
-	\newcommand{\alakohtaTyyppi}{allekkain}
-	\newcommand{\alakohtaKoodi}{}
-}
-{
-	\begin{enumerate}[a)]
-		\alakohtaKoodi
-	\end{enumerate}
-}
+% Käyttöesimerkit:
 
-\newcounter{alakohtaMonesko}
+% \alakohdat
+%   § alakohta1
+%   § alakohta2
+% \loppu
 
-\newenvironment{alakohdatrivi}
-{
-	\newcommand{\alakohtaTyyppi}{vierekkain}
-	\newcommand{\alakohtaKoodi}{}
-}
-{
-	
-	\setcounter{alakohtaMonesko}{1}
-	\alakohtaKoodi
-}
+% \vaiheet
+%   § vaihe1
+%   § vaihe2
+% \loppu
 
-\newcommand{\alakohta}[1]{
-	\ifthenelse{\equal{\alakohtaTyyppi}{allekkain}} {
-		\expandafter\def\expandafter\alakohtaKoodi\expandafter{\alakohtaKoodi{} \item #1}
-	}{
-		\expandafter\def\expandafter\alakohtaKoodi\expandafter{%
-			\alakohtaKoodi{}%
-			\ifthenelse{\equal{\value{alakohtaMonesko}}{1}}{\hspace{0.52cm}}{\hspace{0.6cm}}%
-			\alph{alakohtaMonesko}) %
-			\addtocounter{alakohtaMonesko}{1}%
-			#1
-		}
-	}
-}
+% \luettelo
+%   § luettelotasolla1
+%	§§ luettelotasolla2
+%   § luettelotasolla1
+%	§§ luettelotasolla2
+%	§§§ luettelotasolla3
+% \loppu
+
+\newcommand{\alakohdat}{\Activate\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})}
+\newcommand{\vaiheet}{\Activate\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})}
+\newcommand{\luettelo}{\Activate\begin{easylist}[itemize]}
+\newcommand{\tekijat}{\Activate\begin{easylist}\NewList(Hide=100)}
+\newcommand{\loppu}{\end{easylist}\Deactivate}
