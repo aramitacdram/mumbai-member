@@ -1,12 +1,30 @@
 \ProvidesPackage{commons/packages/alakohdat}
 
-% Ympäristö tehtävän ja esimerkkien alakohtien listaamiseen.
-% "Alakohdat vierekkäin"-variantti poistettu
-% Käyttöesimerkki:
-% \ala
+% Ympäristöjä listoille:
+% - alakohdat: tehtävien, esimerkkien ja vastausten alakohdat: a), b), c), ... (vrt. enumerate a)-optiolla)
+% - vaiheet: ratkaisun vaiheet ym.: 1., 2., 3., ... (vrt. enumerate)
+% - luettelo: vapaamuotoiset listat: ei numerointia (vrt. itemize)
+% Huom! "alakohdat vierekkäin" -variantti poistettu
+
+% Käyttöesimerkit:
+
+% \alakohdat
 %   § alakohta1
 %   § alakohta2
-% \kohdat
+% \loppu
+
+% \vaiheet
+%   § vaihe1
+%   § vaihe2
+% \loppu
+
+% \luettelo
+%   § luettelotasolla1
+%	§§ luettelotasolla2
+%   § luettelotasolla1
+%	§§ luettelotasolla2
+%	§§§ luettelotasolla3
+% \loppu
 
 \newcommand{\alakohdat}{\Activate\begin{easylist}\ListProperties(Start1=1,Numbers=l,FinalMark={)})}
 \newcommand{\vaiheet}{\Activate\begin{easylist}\ListProperties(Start1=1,Numbers=a,FinalMark={.})}
