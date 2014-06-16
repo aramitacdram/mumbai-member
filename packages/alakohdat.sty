@@ -9,25 +9,34 @@
 
 % Käyttöesimerkit:
 
-% \alakohdat
+% \alakohdat{
 %   § alakohta1
 %   § alakohta2
-% \loppu
+% }
 
-% \vaiheet
+% \vaiheet{
 %   § vaihe1
 %   § vaihe2
-% \loppu
+% }
 
-% \luettelo
+% \luettelo{
 %   § luettelotasolla1
 %	§§ luettelotasolla2
 %   § luettelotasolla1
 %	§§ luettelotasolla2
 %	§§§ luettelotasolla3
-% \loppu
+% }
 
-\newcommand{\alakohdat}[1]{\Activate\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})#1\end{easylist}\Deactivate}
-\newcommand{\vaiheet}[1]{\Activate\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})#1\end{easylist}\Deactivate}
-\newcommand{\luettelo}[1]{\Activate\begin{easylist}[itemize]#1\end{easylist}\Deactivate}
-\newcommand{\tekijat}[1]{\Activate\begin{easylist}\NewList(Hide=100)#1\end{easylist}\Deactivate}
+% "I told you that active characters were nasty" -- easylist documentation
+% http://tex.stackexchange.com/questions/119646/define-a-custom-command-to-wrap-easylist
+
+\makeatletter
+\newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})#1\end{easylist}\endgroup}
+\newcommand{\alakohdat}{\begingroup\Activate\alakohdat@aux}
+\newcommand{\vaiheet@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})#1\end{easylist}\endgroup}
+\newcommand{\vaiheet}{\begingroup\Activate\vaiheet@aux}
+\newcommand{\luettelo@aux}[1]{\begin{easylist}[itemize]#1\end{easylist}\endgroup}
+\newcommand{\luettelo}{\begingroup\Activate\luettelo@aux}
+\newcommand{\tekijat@aux}[1]{\begin{easylist}\NewList(Hide=100)#1\end{easylist}\endgroup}
+\newcommand{\tekijat}{\begingroup\Activate\tekijat@aux}
+\makeatletter
