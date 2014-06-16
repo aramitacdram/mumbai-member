@@ -27,8 +27,7 @@
 %	§§§ luettelotasolla3
 % \loppu
 
-\newcommand{\alakohdat}{\Activate\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})}
-\newcommand{\vaiheet}{\Activate\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})}
-\newcommand{\luettelo}{\Activate\begin{easylist}[itemize]}
-\newcommand{\tekijat}{\Activate\begin{easylist}\NewList(Hide=100)}
-\newcommand{\loppu}{\end{easylist}\Deactivate}
+\newcommand{\alakohdat}[1]{\Activate\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})#1\end{easylist}\Deactivate}
+\newcommand{\vaiheet}[1]{\Activate\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})#1\end{easylist}\Deactivate}
+\newcommand{\luettelo}[1]{\Activate\begin{easylist}[itemize]#1\end{easylist}\Deactivate}
+\newcommand{\tekijat}[1]{\Activate\begin{easylist}\NewList(Hide=100)#1\end{easylist}\Deactivate}
