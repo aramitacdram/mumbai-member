@@ -108,7 +108,7 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	tila.out.write("\\draw[arrows=-triangle 45, thick, color=black] {} -- {} node[right] {{{}}};\n".format(tikzPiste(palku), tikzPiste(ploppu), nimiY))
 	
 	# Piirretään asteikko.
-	asteikkovalit = [1, 2, 4, 8, 16, 32, 64]
+	asteikkovalit = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000]
 	
 	def piirraXKohta(X):
 		alku = vekSumma(muunna((X, 0)), (0, -0.09))
