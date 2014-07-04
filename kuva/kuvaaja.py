@@ -44,7 +44,7 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	# Piirretään ruudukko.
 	if ruudukko:
 		varit = ["black!30!white", "black!15!white", "black!8!white", "black!4!white", "black!2!white"]
-		valit = [64.0, 32.0, 16.0, 8.0, 4.0, 2.0, 1.0, 0.5, 0.25, 0.125]
+		valit = [10.**i for i in range(5, -6, -1)]
 		rivit = []
 		
 		def piirraPystyViiva(X, vari):
@@ -97,15 +97,15 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 			tila.out.write(rivi)
 	
 	# Piirretään pohjaristi.
-	nuoli = "\\draw[arrows=-triangle 45, thick] {} -- {};\n"
+	nuoli = "\\draw[arrows=-triangle 45, thick, color=black] {} -- {};\n"
 	valku = vekSumma(muunna((minX, 0)), (-0.2, 0))
 	vloppu = vekSumma(muunna((maxX, 0)), (0.6, 0))
 	vlopput = vekSumma(muunna((maxX, 0)), (0.3, 0))
 	palku = vekSumma(muunna((0, minY)), (0, -0.2))
 	ploppu = vekSumma(muunna((0, maxY)), (0, 0.6))
-	tila.out.write("\\draw[arrows=-triangle 45, thick] {} -- {};\n".format(tikzPiste(valku), tikzPiste(vloppu)))
-	tila.out.write("\\draw {} node[above right] {{{}}};\n".format(tikzPiste(vlopput), nimiX))
-	tila.out.write("\\draw[arrows=-triangle 45, thick] {} -- {} node[right] {{{}}};\n".format(tikzPiste(palku), tikzPiste(ploppu), nimiY))
+	tila.out.write("\\draw[arrows=-triangle 45, thick, color=black] {} -- {};\n".format(tikzPiste(valku), tikzPiste(vloppu)))
+	tila.out.write("\\draw[color=black] {} node[above right] {{{}}};\n".format(tikzPiste(vlopput), nimiX))
+	tila.out.write("\\draw[arrows=-triangle 45, thick, color=black] {} -- {} node[right] {{{}}};\n".format(tikzPiste(palku), tikzPiste(ploppu), nimiY))
 	
 	# Piirretään asteikko.
 	asteikkovalit = [1, 2, 4, 8, 16, 32, 64]
@@ -114,15 +114,15 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 		alku = vekSumma(muunna((X, 0)), (0, -0.09))
 		kohta = vekSumma(muunna((X, 0)), (0.1, 0))
 		loppu = vekSumma(muunna((X, 0)), (0, 0.09))
-		tila.out.write("\\draw[line width=1.2pt] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
-		tila.out.write("\\draw {} node[above] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), X))
+		tila.out.write("\\draw[line width=1.2pt, color=black] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
+		tila.out.write("\\draw[color=black] {} node[above] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), X))
 	
 	def piirraYKohta(Y):
 		alku = vekSumma(muunna((0, Y)), (-0.09, 0))
 		kohta = muunna((0, Y))
 		loppu = vekSumma(muunna((0, Y)), (0.09, 0))
-		tila.out.write("\\draw[line width=1.2pt] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
-		tila.out.write("\\draw {} node[right] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), Y))
+		tila.out.write("\\draw[line width=1.2pt, color=black] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
+		tila.out.write("\\draw[color=black] {} node[right] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), Y))
 	
 	for vali in asteikkovalit:
 		if vali * tila.asetukset['xmuunnos'][0] >= 0.67:
