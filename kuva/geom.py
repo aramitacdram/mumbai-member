@@ -100,7 +100,8 @@ def suora(A, B, nimi = "", kohta = 0.5, puoli = True, piirra = True, Ainf = True
 			Bp = B
 		
 		paksuus = "{}pt".format(tikzLuku(0.75 * tila.haePaksuus()))
-		tila.out.write("\\draw[line width={}] {} -- {};\n".format(paksuus, tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
+		vari = tila.asetukset['piirtovari']
+		tila.out.write("\\draw[line width={}, color={}] {} -- {};\n".format(paksuus, vari, tikzPiste(muunna(Ap)), tikzPiste(muunna(Bp))))
 		
 		suunta = 180 * atan2(B[0] - A[0], -(B[1] - A[1])) / pi
 		nimeaPiste(interpoloi(A, B, kohta), nimi, suunta + 180 * int(puoli))
