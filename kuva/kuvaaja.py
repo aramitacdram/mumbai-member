@@ -100,9 +100,11 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	nuoli = "\\draw[arrows=-triangle 45, thick] {} -- {};\n"
 	valku = vekSumma(muunna((minX, 0)), (-0.2, 0))
 	vloppu = vekSumma(muunna((maxX, 0)), (0.6, 0))
+	vlopput = vekSumma(muunna((maxX, 0)), (0.3, 0))
 	palku = vekSumma(muunna((0, minY)), (0, -0.2))
 	ploppu = vekSumma(muunna((0, maxY)), (0, 0.6))
-	tila.out.write("\\draw[arrows=-triangle 45, thick] {} -- {} node[above] {{{}}};\n".format(tikzPiste(valku), tikzPiste(vloppu), nimiX))
+	tila.out.write("\\draw[arrows=-triangle 45, thick] {} -- {};\n".format(tikzPiste(valku), tikzPiste(vloppu)))
+	tila.out.write("\\draw {} node[above right] {{{}}};\n".format(tikzPiste(vlopput), nimiX))
 	tila.out.write("\\draw[arrows=-triangle 45, thick] {} -- {} node[right] {{{}}};\n".format(tikzPiste(palku), tikzPiste(ploppu), nimiY))
 	
 	# Piirretään asteikko.
