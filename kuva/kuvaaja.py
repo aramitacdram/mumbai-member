@@ -2,6 +2,17 @@
 
 from kuva import *
 
+# Mahdolliset viiva- ja labelvälit.
+valit = []
+for i in range(-10, 11):
+	if i < 0:
+		b = 10.**i
+	else:
+		b = 10**i
+	valit.append(b)
+	valit.append(2 * b)
+	valit.append(5 * b)
+
 def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nimiY = "", ruudukko = True):
 	"""Luo kuvaajapohja kuvaajalle jossa X-koordinaatit ovat välillä [minX, maxX]
 	ja Y-koordinaatit välillä [minY, maxY]. Kuvaajapohjan koko on
@@ -20,6 +31,13 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	
 	if minX == maxX or minY == maxY:
 		raise ValueError("kuvaajapohja: On oltava minX < maxX ja minY < maxY.")
+	
+	dX = maxX - minX
+	dY = maxY - minY
+	maxX += 1e-5 * dX
+	minX -= 1e-5 * dX
+	maxY += 1e-5 * dY
+	minY -= 1e-5 * dY
 	
 	if leveys is None and korkeus is None:
 		leveys = maxX - minX
@@ -42,65 +60,47 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	siirraY(minY)
 	
 	# Piirretään ruudukko.
+	for vali in valit:
+		xvali = vali
+		if xvali * tila.asetukset['xmuunnos'][0] > 0.42: break
+	for vali in valit:
+		yvali = vali
+		if yvali * tila.asetukset['ymuunnos'][0] > 0.42: break
 	if ruudukko:
-		varit = ["black!30!white", "black!15!white", "black!8!white", "black!4!white", "black!2!white"]
-		valit = [10.**i for i in range(5, -6, -1)]
-		rivit = []
+		vari = "black!30!white"
 		
-		def piirraPystyViiva(X, vari):
-			vari = varit[min(vari, len(varit) - 1)]
-			
+		def piirraPystyviiva(X):
 			alku = muunna((X, minY))
 			loppu = muunna((X, maxY))
-			rivit.append("\\draw[color={}] {} -- {};\n".format(vari, tikzPiste(alku), tikzPiste(loppu)));
+			tila.out.write("\\draw[color={}] {} -- {};\n".format(vari, tikzPiste(alku), tikzPiste(loppu)))
 		
-		def piirraVaakaViiva(Y, vari):
-			vari = varit[min(vari, len(varit) - 1)]
-			
+		def piirraVaakaviiva(Y):
 			alku = muunna((minX, Y))
 			loppu = muunna((maxX, Y))
-			rivit.append("\\draw[color={}] {} -- {};\n".format(vari, tikzPiste(alku), tikzPiste(loppu)));
+			tila.out.write("\\draw[color={}] {} -- {};\n".format(vari, tikzPiste(alku), tikzPiste(loppu)))
 		
-		pvari = 0
-		vvari = 0
-		for vali in valit:
-			if vali * tila.asetukset['xmuunnos'][0] >= 0.37:
-				kaytetty = False
-				X = vali
-				while(X < maxX + 0.0001):
-					kaytetty = True
-					piirraPystyViiva(X, pvari)
-					X += vali
-				X = -vali
-				while(X > minX - 0.0001):
-					kaytetty = True
-					piirraPystyViiva(X, pvari)
-					X -= vali
-				if kaytetty: pvari += 1
-			
-			if vali * tila.asetukset['ymuunnos'][0] >= 0.37:
-				kaytetty = False
-				Y = vali
-				while(Y < maxY + 0.0001):
-					kaytetty = True
-					piirraVaakaViiva(Y, vvari)
-					Y += vali
-				Y = -vali
-				while(Y > minY - 0.0001):
-					kaytetty = True
-					piirraVaakaViiva(Y, vvari)
-					Y -= vali
-				if kaytetty: vvari += 1
-		
-		rivit.reverse()
-		for rivi in rivit:
-			tila.out.write(rivi)
+		X = xvali
+		while X < maxX:
+			piirraPystyviiva(X)
+			X += xvali
+		X = -xvali
+		while X > minX:
+			piirraPystyviiva(X)
+			X -= xvali
+		Y = yvali
+		while Y < maxY:
+			piirraVaakaviiva(Y)
+			Y += yvali
+		Y = -yvali
+		while Y > minY:
+			piirraVaakaviiva(Y)
+			Y -= yvali
 	
 	# Piirretään pohjaristi.
 	nuoli = "\\draw[arrows=-triangle 45, thick, color=black] {} -- {};\n"
 	valku = vekSumma(muunna((minX, 0)), (-0.2, 0))
-	vloppu = vekSumma(muunna((maxX, 0)), (0.6, 0))
-	vlopput = vekSumma(muunna((maxX, 0)), (0.3, 0))
+	vloppu = vekSumma(muunna((maxX, 0)), (0.9, 0))
+	vlopput = vekSumma(muunna((maxX, 0)), (0.6, 0))
 	palku = vekSumma(muunna((0, minY)), (0, -0.2))
 	ploppu = vekSumma(muunna((0, maxY)), (0, 0.6))
 	tila.out.write("\\draw[arrows=-triangle 45, thick, color=black] {} -- {};\n".format(tikzPiste(valku), tikzPiste(vloppu)))
@@ -108,14 +108,12 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 	tila.out.write("\\draw[arrows=-triangle 45, thick, color=black] {} -- {} node[right] {{{}}};\n".format(tikzPiste(palku), tikzPiste(ploppu), nimiY))
 	
 	# Piirretään asteikko.
-	asteikkovalit = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000]
-	
 	def piirraXKohta(X):
 		alku = vekSumma(muunna((X, 0)), (0, -0.09))
-		kohta = vekSumma(muunna((X, 0)), (0.1, 0))
+		kohta = vekSumma(muunna((X, 0)), (-0.08, 0))
 		loppu = vekSumma(muunna((X, 0)), (0, 0.09))
 		tila.out.write("\\draw[line width=1.2pt, color=black] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
-		tila.out.write("\\draw[color=black] {} node[above] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), X))
+		tila.out.write("\\draw[color=black] {} node[above right] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), X))
 	
 	def piirraYKohta(Y):
 		alku = vekSumma(muunna((0, Y)), (-0.09, 0))
@@ -124,33 +122,33 @@ def pohja(minX, maxX, minY, maxY, leveys = None, korkeus = None, nimiX = "", nim
 		tila.out.write("\\draw[line width=1.2pt, color=black] {} -- {};\n".format(tikzPiste(alku), tikzPiste(loppu)))
 		tila.out.write("\\draw[color=black] {} node[right] {{\\footnotesize {}}};\n".format(tikzPiste(kohta), Y))
 	
-	for vali in asteikkovalit:
-		if vali * tila.asetukset['xmuunnos'][0] >= 0.67:
-			X = vali
-			while X < maxX + 0.0001:
-				piirraXKohta(X)
-				X += vali
-			
-			X = -vali
-			while X > minX - 0.0001:
-				piirraXKohta(X)
-				X -= vali
-			
-			break
+	for vali in valit:
+		axvali = vali
+		if floor(maxX / axvali) + floor(-minX / axvali) <= 7: break
+	for vali in valit:
+		ayvali = vali
+		if floor(maxY / ayvali) + floor(-minY / ayvali) <= 7: break
+	axvali = max(axvali, xvali)
+	ayvali = max(ayvali, yvali)
+	if abs(float(axvali) / xvali - 2.5) < 1e-5: axvali = xvali
+	if abs(float(ayvali) / yvali - 2.5) < 1e-5: ayvali = yvali
 	
-	for vali in asteikkovalit:
-		if vali * tila.asetukset['ymuunnos'][0] >= 0.67:
-			Y = vali
-			while Y < maxY + 0.0001:
-				piirraYKohta(Y)
-				Y += vali
-			
-			Y = -vali
-			while Y > minY - 0.0001:
-				piirraYKohta(Y)
-				Y -= vali
-			
-			break
+	X = axvali
+	while X < maxX:
+		piirraXKohta(X)
+		X += axvali
+	X = -axvali
+	while X > minX:
+		piirraXKohta(X)
+		X -= axvali
+	Y = ayvali
+	while Y < maxY:
+		piirraYKohta(Y)
+		Y += ayvali
+	Y = -ayvali
+	while Y > minY:
+		piirraYKohta(Y)
+		Y -= ayvali
 	
 	# Rajaa piirto.
 	rajaa(minX = minX, maxX = maxX, minY = minY, maxY = maxY)
