@@ -1,0 +1,106 @@
+\ProvidesPackage{commons/packages/koosterakenteet}
+
+% Ympäristöjä listoille:
+% - alakohdat: tehtävien, esimerkkien ja vastausten alakohdat: a), b), c), ... (vrt. enumerate a)-optiolla)
+% - vaiheet: ratkaisun vaiheet ym.: 1., 2., 3., ... (vrt. enumerate)
+% - luettelo: vapaamuotoiset listat: ei numerointia (vrt. itemize)
+% - tekijät: varattu tekijöiden listaukseen, ulkoasu saattaa muuttua
+% Huom! "alakohdat vierekkäin" -variantti poistettu
+
+% Käyttöesimerkit:
+
+% \alakohdat{
+%   § alakohta1
+%   § alakohta2
+% }
+
+% \luettelo{
+%   § luettelotasolla1
+%	§§ luettelotasolla2
+%   § luettelotasolla1
+%	§§ luettelotasolla2
+%	§§§ luettelotasolla3
+% }
+
+% "I told you that active characters were nasty" -- easylist documentation
+% http://tex.stackexchange.com/questions/119646/define-a-custom-command-to-wrap-easylist
+
+\makeatletter
+\newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})#1\end{easylist}\endgroup}
+\newcommand{\alakohdat}{\begingroup\Activate\alakohdat@aux}
+\newcommand{\numerointi@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})#1\end{easylist}\endgroup}
+\newcommand{\numerointi}{\begingroup\Activate\numerointi@aux}
+\newcommand{\luettelo@aux}[1]{\begin{easylist}[itemize]#1\end{easylist}\endgroup}
+\newcommand{\luettelo}{\begingroup\Activate\luettelo@aux}
+\newcommand{\tekijat@aux}[1]{\begin{easylist}\NewList(Hide=100)#1\end{easylist}\endgroup}
+\newcommand{\tekijat}{\begingroup\Activate\tekijat@aux}
+\makeatother
+
+% tiivistelmälaatikot mdframed-paketilla
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\pgfdeclarehorizontalshading{laatikkotausta}{100bp}{color(0bp)=(vapaa_matikka_vari_3);
+                                                    color(25bp)=(vapaa_matikka_vari_3);
+                                                    color(75bp)=(white);
+                                                    color(100bp)=(white)}
+
+\mdfdefinestyle{laatikkotyyli}{
+% Värin pitää mennä vähintään 3 mm paperin reunan yli, jotta
+% kirjapainolle jää leikkausvaraa
+  usetwoside=false,
+  leftmargin=-49mm,
+  rightmargin=-25mm,
+  innerleftmargin=49mm,
+  innerrightmargin=25mm,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  hidealllines=true,
+  apptotikzsetting={\tikzset{mdfbackground/.append style = {shading = laatikkotausta}}},
+  needspace=3\baselineskip,
+}
+
+\newcommand{\laatikko}[2][]{%
+  \medskip
+  \begin{mdframed}[style=laatikkotyyli]
+  \ifthenelse{\equal{#1}{}}{#2}{\begin{Large}\textbf{#1}\end{Large}\\ #2}%
+  \end{mdframed}
+  \medskip
+}
+
+\makeatletter
+\newcommand{\luettelolaatikko@aux}[2]{%
+\begin{mdframed}[style=laatikkotyyli]
+\begin{Large}\textbf{#1}\end{Large}
+\begin{easylist}[itemize]
+#2
+\end{easylist}
+\end{mdframed}
+\endgroup
+}
+\newcommand{\luettelolaatikko}{%
+  %\medskip
+  \begingroup\Activate
+  \luettelolaatikko@aux
+  %\medskip
+}
+\makeatother
+
+\makeatletter
+\newcommand{\numerointilaatikko@aux}[2]{%
+\begin{mdframed}[style=laatikkotyyli]
+\begin{Large}\textbf{#1}\end{Large}
+\begin{easylist}
+\NewList(Start1=1,Numbers=a,FinalMark={.})#1
+#2
+\end{easylist}
+\end{mdframed}
+\endgroup
+}
+\newcommand{\numerointilaatikko}{%
+  %\medskip
+  \begingroup\Activate
+  \numerointilaatikko@aux
+  %\medskip
+}
+\makeatother
