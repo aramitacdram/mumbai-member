@@ -33,3 +33,5 @@
 *.pyc
 *~
 .DS_Store
+
+.vagrant/
