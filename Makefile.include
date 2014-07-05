@@ -19,7 +19,7 @@
 ###           # do something...
 ###
 
-LUALATEX	?= lualatex -shell-escape -interaction=nonstopmode
+LUALATEX	?= lualatex -shell-escape -interaction=nonstopmode -halt-on-error
 BIBTEX		?= bibtex
 
 ## Action for 'make view'
