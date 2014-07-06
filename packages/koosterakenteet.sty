@@ -60,10 +60,14 @@
   needspace=3\baselineskip,
 }
 
+\newcommand{\laatikonotsikko}[1]{
+  {\Large \itshape #1}
+}
+
 \newcommand{\laatikko}[2][]{%
   \medskip
   \begin{mdframed}[style=laatikkotyyli]
-  \ifthenelse{\equal{#1}{}}{#2}{\begin{Large}\textbf{#1}\end{Large}\\ #2}%
+  \ifthenelse{\equal{#1}{}}{#2}{\laatikonotsikko{#1}\\ #2}%
   \end{mdframed}
   \medskip
 }
@@ -71,7 +75,7 @@
 \makeatletter
 \newcommand{\luettelolaatikko@aux}[2]{%
 \begin{mdframed}[style=laatikkotyyli]
-\begin{Large}\textbf{#1}\end{Large}
+\laatikonotsikko{#1}
 \begin{easylist}[itemize]
 #2
 \end{easylist}
@@ -89,9 +93,9 @@
 \makeatletter
 \newcommand{\numerointilaatikko@aux}[2]{%
 \begin{mdframed}[style=laatikkotyyli]
-\begin{Large}\textbf{#1}\end{Large}
+\laatikonotsikko{#1}
 \begin{easylist}
-\NewList(Start1=1,Numbers=a,FinalMark={.})#1
+\NewList(Start1=1,Numbers=a,FinalMark={.})
 #2
 \end{easylist}
 \end{mdframed}
