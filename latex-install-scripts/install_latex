@@ -19,5 +19,5 @@ cd latex-install-tmp
 
 wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xzf install-tl-unx.tar.gz
-sudo ./install-tl-*/install-tl --profile=../travis/texlive.profile
+sudo ./install-tl-*/install-tl --profile=texlive.profile
 sudo /usr/local/texlive/2013/bin/x86_64-linux/tlmgr install $DEPENDENCIES
