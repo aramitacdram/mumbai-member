@@ -17,7 +17,7 @@ done < "dependencies_latex"
 mkdir latex-install-tmp
 cd latex-install-tmp
 
-wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+wget ftp://tug.org/historic/systems/texlive/2013/tlnet-final/install-tl-unx.tar.gz
 tar -xzf install-tl-unx.tar.gz
-sudo ./install-tl-*/install-tl --profile=../commons/latex-install-scripts/texlive.profile
-sudo /usr/local/texlive/2013/bin/x86_64-linux/tlmgr install $DEPENDENCIES
+sudo ./install-tl-*/install-tl --profile=../commons/latex-install-scripts/texlive.profile --repository=ftp://tug.org/historic/systems/texlive/2013/tlnet-final/
+sudo /usr/local/texlive/2013/bin/x86_64-linux/tlmgr --repository=ftp://tug.org/historic/systems/texlive/2013/tlnet-final/ install $DEPENDENCIES
