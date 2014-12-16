@@ -47,7 +47,7 @@ BIBFILES = $(patsubst %,%.bib,\
 			    -e 's/, */ /g'))
 
 ## Add \input'ed or \include'd files to $(PDFTARGETS) dependencies.
-CONTENTTEX= $(wildcard content/*.tex) $(wildcard exercises/*.tex)
+CONTENTTEX= $(wildcard content/*.tex) $(wildcard exercises/*.tex) $(wildcard maa1/*.tex) $(wildcard maa2/*.tex)
 INCLUDEDTEX = $(wildcard commons/*/*.tex) $(CONTENTTEX)
 INCLUDEDSTY = $(wildcard commons/*/*.sty)
 

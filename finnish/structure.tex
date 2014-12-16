@@ -10,7 +10,7 @@
 \ifcsname skipHeader\endcsname
 \else
 	\iffinal
-		\kansilehti{}
+		\kansilehtif{}
 	\else
 		\kansilehti{Versio \kirjanVersio \, (\today)}
 	\fi
@@ -20,7 +20,10 @@
 
 	\newpage
 	\input{config/authors}
-	\input{commons/finnish/donations}
+	\iffinal
+	\else
+		\input{commons/finnish/donations}
+	\fi
 	\newpage
 	\input{commons/finnish/project}
 
