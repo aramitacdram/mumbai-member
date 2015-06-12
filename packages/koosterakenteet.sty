@@ -26,15 +26,15 @@
 % http://tex.stackexchange.com/questions/119646/define-a-custom-command-to-wrap-easylist
 
 \makeatletter
-\newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})#1\end{easylist}\endgroup}
+\newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)},Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\alakohdat}{\begingroup\Activate\alakohdat@aux}
-\newcommand{\alakohdatm@aux}[1]{\begin{multicols}{2}\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)})#1\end{easylist}\end{multicols}\endgroup}
+\newcommand{\alakohdatm@aux}[1]{\begin{multicols}{2}\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)},Space*=-5pt)#1\end{easylist}\end{multicols}\endgroup}
 \newcommand{\alakohdatm}{\begingroup\Activate\alakohdatm@aux}
-\newcommand{\numerointi@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.})#1\end{easylist}\endgroup}
+\newcommand{\numerointi@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.},Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\numerointi}{\begingroup\Activate\numerointi@aux}
-\newcommand{\luettelo@aux}[1]{\begin{easylist}[itemize]#1\end{easylist}\endgroup}
+\newcommand{\luettelo@aux}[1]{\begin{easylist}[itemize]\ListProperties(Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\luettelo}{\begingroup\Activate\luettelo@aux}
-\newcommand{\tekijat@aux}[1]{\begin{easylist}\NewList(Hide=100)#1\end{easylist}\endgroup}
+\newcommand{\tekijat@aux}[1]{\begin{easylist}\NewList(Hide=100,Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\tekijat}{\begingroup\Activate\tekijat@aux}
 \makeatother
 
