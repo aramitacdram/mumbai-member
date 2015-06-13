@@ -18,19 +18,15 @@
 % default: väreissä
 \newif\ifgrey
 
-% valmis?
-% default: ei
-\newif\iffinal
-
-% yksisarakkeiset vastaussivut?
-% default: kaksisarakkeiset
-\newif\ifsingle
-
 % endnotes pois käytöstä?
 % default: endnotes käytössä
 \newif\ifnonotes
 
-\input{config/options} % täällä voi muuttaa ylläolevien muuttujien totuusarvoja
+\newcommand{\kurssi}{}
+\newcommand{\painos}{}
+\newcommand{\ISBN}{}
+\newcommand{\painopaikka}{}
+\input{config/meta}
 
 % -----
 
@@ -56,19 +52,6 @@
 \usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
 
 % -----
-
-\newcommand{\kurssinTunnus}{}
-\newcommand{\kurssinNimi}{}
-\newcommand{\sitaatti}{Sitaatti puuttuu.}
-\newcommand{\sitaatinLahde}{}
-\newcommand{\kirjanVersio}{}
-\newcommand{\kirjanPainopaikka}{}
-\newcommand{\kirjanVastaavuus}{}
-\newcommand{\metasivu}{}
-
-\input{config/meta}
-
-%-----
 
 \raggedbottom
 

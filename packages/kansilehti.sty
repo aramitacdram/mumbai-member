@@ -1,40 +1,19 @@
 \ProvidesPackage{commons/packages/kansilehti}
 
-\newcommand{\kansilehti}[1]{
-\begin{titlepage}
-	\vspace*{4.5cm}
-	\begin{center}
-		\begin{doublespace}
-			{\sffamily\Huge Vapaa matikka} \\
-			\vspace*{0.5cm}
-			{\sffamily\LARGE \kurssinNimi \; (\kurssinTunnus)} \\	
-			\vspace*{1.5cm}
-			\begin{quote}
-				{\fontIII \sitaatti} \\
-				{\fontIV \sitaatinLahde}
-			\end{quote}
-		\end{doublespace}
-		\vfill
-		\includegraphics[scale=0.26]{commons/logo/ao\vari}
-		\hspace*{0.5cm}
-		\includegraphics[scale=0.6]{commons/logo/tt\vari} \\
-		\vspace*{1.0cm}
-		\vcent{\includegraphics[scale=0.3]{commons/logo/cc.pdf}}
-		\vcent{\includegraphics[scale=0.3]{commons/logo/by.pdf}}
-		{\fontIV Sisältö on lisensoitu avoimella CC BY 4.0 -lisenssillä. \\ #1}
-	\end{center}
-\end{titlepage}
-\metasivu
-}
-
-\newcommand{\kansilehtifinal}{
+\newcommand{\kansilehti}{
+% kansilehti:
 \begin{titlepage}
 	\vspace*{5.6cm}
 	\begin{center}
 		\begin{doublespace}
-			{\sffamily\Huge \kurssinNimi} \\
+			{\sffamily\Huge Vapaa matikka} \\
 			\vspace*{0.7cm}
-			{\sffamily\LARGE \kurssinTunnus}
+			{\sffamily\LARGE \kurssi}
+			\vspace*{1.5cm}
+			%\begin{quote}
+			%	{\fontIII \sitaatti} \\
+			%	{\fontIV \sitaatinLahde}
+			%\end{quote}
 		\end{doublespace}
 		\vfill
 		\includegraphics[scale=0.26]{commons/logo/ao\vari}
@@ -46,5 +25,28 @@
 		{\fontIV Sisältö on lisensoitu avoimella CC BY 4.0 -lisenssillä.}
 	\end{center}
 \end{titlepage}
-\metasivu
+% metasivu:
+\laatikko[Avoimet oppimateriaalit ry]{
+Yhdistys tuottaa ja julkaisee oppimateriaaleja ja kirjoja, jotka ovat kaikille ilmaisia ja vapaita käyttää, levittää ja muokata. Vapaa matikka -sarja on suunnattu lukion pitkän matematiikan kursseille ja täyttää valtakunnallisen opetussuunnitelman vaatimukset.}
+\vspace*{\fill}
+\begin{flushleft}
+	\sffamily
+	Jos olet kiinnostunut Vapaa matikka -sarjan kirjoittamisesta,
+	voit tehdä pull requestin muutoksillesi GitHub-palvelussa tai
+	osallistua yhdistyksen toimintaan. \\
+	\vspace*{25pt}
+	Lisätietoja Vapaa matikka -kirjasarjasta työryhmältä,
+	\href{mailto:vapaamatikka@avoimetoppimateriaalit.fi}{vapaamatikka@avoimetoppimateriaalit.fi}. \\
+	\vspace*{25pt}
+	Teknologiateollisuuden 100-vuotissäätiö on rahoittanut Vapaa matikka -kirjasarjan kirjoittamista $30\,000$\, eurolla. \\
+	\vspace*{25pt}
+	\painos \\
+	\vspace*{25pt}
+	\ISBN
+	\vspace*{25pt}
+	YKL 51 \\
+	UDK 51 \\
+	\vspace*{25pt}
+	\painopaikka
+\end{flushleft}
 }

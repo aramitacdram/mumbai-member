@@ -9,29 +9,16 @@
 
 \ifcsname skipHeader\endcsname
 \else
-	\iffinal
-		\kansilehtifinal
-	\else
-		\kansilehti{Versio \kirjanVersio \, (\today)}
-	\fi
+	\kansilehti
 
 	\newpage
 	\input{commons/finnish/license}
 
 	\newpage
 	\input{config/authors}
-	\iffinal
-	\else
-		\input{commons/finnish/donations}
-	\fi
+
 	\newpage
 	\input{commons/finnish/project}
-
-%	\iffinal
-%	\else
-%		\newpage
-%		
-%	\fi
 \fi
 
 \tableofcontents
