@@ -2,7 +2,6 @@
 
 % Ympäristöjä listoille:
 % - alakohdat: tehtävien, esimerkkien ja vastausten alakohdat: a), b), c), ... (vrt. enumerate a)-optiolla)
-% - alakohdatm: alakohta + alakohdat kahteen sarakkeeseen (esteettisiä syitä ja esimerkiksi tilan säästämistä varten) (m niin kuin multicols)
 % - vaiheet: ratkaisun vaiheet ym.: 1., 2., 3., ... (vrt. enumerate)
 % - luettelo: vapaamuotoiset listat: ei numerointia (vrt. itemize)
 % - tekijät: varattu tekijöiden listaukseen, ulkoasu saattaa muuttua
@@ -28,8 +27,6 @@
 \makeatletter
 \newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)},Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\alakohdat}{\begingroup\Activate\alakohdat@aux}
-\newcommand{\alakohdatm@aux}[1]{\begin{multicols}{2}\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)},Space*=-5pt)#1\end{easylist}\end{multicols}\endgroup}
-\newcommand{\alakohdatm}{\begingroup\Activate\alakohdatm@aux}
 \newcommand{\numerointi@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.},Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\numerointi}{\begingroup\Activate\numerointi@aux}
 \newcommand{\luettelo@aux}[1]{\begin{easylist}[itemize]\ListProperties(Space*=-5pt)#1\end{easylist}\endgroup}

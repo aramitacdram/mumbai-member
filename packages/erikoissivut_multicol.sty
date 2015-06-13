@@ -1,6 +1,8 @@
-\ProvidesPackage{commons/packages/erikoissivut_levea}
+% OBSOLETED
 
-\AtBeginEnvironment{tehtava}{\begin{minipage}{120mm}}
+\ProvidesPackage{commons/packages/erikoissivut_kapea}
+
+\AtBeginEnvironment{tehtava}{\begin{minipage}{60mm}}
 \AtEndEnvironment{tehtava}{\end{minipage}}
 
 \newcommand{\sarjaA}{\subsubsection*{Opi perusteet}}
@@ -28,6 +30,7 @@
 
 \newenvironment{tehtavasivu}
 {
+  \begin{adjustwidth}{-4mm}{0mm}
   \newpage
 
   \titleformat{\subsection}[hang]
@@ -39,14 +42,19 @@
 
   \subsection*{Tehtäviä}%
   %\addcontentsline{toc}{section}{Tehtäviä}
+  \setlength{\columnsep}{7mm}
+  
   \raggedright
 }
 {
+  
+  \end{adjustwidth}
   \newpage
 }
 
 \newenvironment{kotitehtavasivu}
 {
+  \begin{adjustwidth}{-4mm}{0mm}
   \newpage
 
   \titleformat{\subsection}[hang]
@@ -57,21 +65,25 @@
   [\vspace{0.5mm}{\titlerule[0.5pt]}]
 
   \subsection*{Kotitehtäviä}%
-  %\addcontentsline{toc}{section}{Kotitehtäviä}
+  %\addcontentsline{toc}{section}{Tehtäviä}
+  \setlength{\columnsep}{7mm}
+  
   \raggedright
 }
 {
+  
+  \end{adjustwidth}
   \newpage
 }
 
 \newenvironment{vastaussivu}
 {
   \begin{adjustwidth}{-4mm}{0mm}
-  \setlength{\columnsep}{15mm}
-  \begin{multicols}{2}
+  \setlength{\columnsep}{7mm}
+  
   \raggedright
 }
 {
-  \end{multicols}
+  
   \end{adjustwidth}
 }
