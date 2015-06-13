@@ -12,22 +12,6 @@
 \setcounter{secnumdepth}{7} % kaikki numeroidaan ilman *-optiota
 \usepackage{xifthen} % if-else
 
-%-----
-
-% mustavalkoinen? (vaatii vastaavat kuvatiedostot)
-% default: väreissä
-\newif\ifgrey
-
-% endnotes pois käytöstä?
-% default: endnotes käytössä
-\newif\ifnonotes
-
-\newcommand{\kurssi}{}
-\newcommand{\painos}{}
-\newcommand{\ISBN}{}
-\newcommand{\painopaikka}{}
-\input{config/meta}
-
 % -----
 
 % LuaLaTeX
@@ -50,6 +34,23 @@
 \newfontface\fontV[Scale=1.4]{texgyreadventor-regular.otf}
 \newfontface\fontVI[Scale=1.5]{texgyreadventor-regular.otf}
 \usepackage[protrusion=true,expansion=true,verbose=true]{microtype}
+
+% -----
+
+% mustavalkoinen? (vaatii vastaavat kuvatiedostot)
+% default: väreissä
+%\newif\ifgrey
+% Jokin parempi ratkaisu tarvitaan. --NVI
+
+% endnotes pois käytöstä?
+% default: endnotes käytössä
+\newif\ifnonotes
+
+\newcommand{\kurssi}{}
+\newcommand{\painos}{}
+\newcommand{\ISBN}{}
+\newcommand{\painopaikka}{}
+\input{config/meta}
 
 % -----
 
@@ -128,17 +129,23 @@
 % Omat komennot
 \input{commons/finnish/constants}
 
-\ifgrey
-    \newcommand{\vari}{_grey}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.00,0.00,0.00,0.25}   % Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.00,0.00,0.00,0.25}   % Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.00,0.00,0.00,0.80}   % Tehtävänumerot
-\else
-    \newcommand{\vari}{}
-    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.20,0.27,0.00,0.00}	% Laatikot
-    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.00,0.42,0.65,0.00}	% Esimerkit
-    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.00,0.00}	% Tehtävänumerot
-\fi
+\newcommand{\vari}{}
+\definecolor{vapaa_matikka_vari_3}{cmyk}{0.20,0.27,0.00,0.00}   % Laatikot
+\definecolor{vapaa_matikka_vari_4}{cmyk}{1.00,0.42,0.65,0.00}   % Esimerkit
+\definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.00,0.00}   % Tehtävänumerot
+
+% Katso huomautus ylempänä.
+%\ifgrey
+%    \newcommand{\vari}{_grey}
+%    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.00,0.00,0.00,0.25}   % Laatikot
+%    \definecolor{vapaa_matikka_vari_4}{cmyk}{0.00,0.00,0.00,0.25}   % Esimerkit
+%    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.00,0.00,0.00,0.80}   % Tehtävänumerot
+%\else
+%    \newcommand{\vari}{}
+%    \definecolor{vapaa_matikka_vari_3}{cmyk}{0.20,0.27,0.00,0.00}	% Laatikot
+%    \definecolor{vapaa_matikka_vari_4}{cmyk}{1.00,0.42,0.65,0.00}	% Esimerkit
+%    \definecolor{vapaa_matikka_vari_5}{cmyk}{0.60,0.80,0.00,0.00}	% Tehtävänumerot
+%\fi
 
 % Tarvitaan kuvien ja taulukkojen vierekkäin laittamiseen.
 \def\vcent#1{\mathsurround0pt$\vcenter{\hbox{#1}}$}
