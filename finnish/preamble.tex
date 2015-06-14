@@ -43,6 +43,13 @@
 \newcommand{\painopaikka}{}
 \input{config/meta}
 
+\providecommand{\lukufilter}[2]{#2} % ylikirjoitetaan kaanna_luku.sh -skriptistä.
+\newcommand{\osa}[1]{\chapter{#1}} % osa
+\newcommand{\nosa}[1]{\chapter*{#1} \addcontentsline{toc}{chapter}{#1}} %numeroimaton osa
+\newcommand{\luku}[2]{#1 #2} % luku
+\newcommand{\nluku}[2]{#1 #2} % numeroimaton luku
+\newcommand{\vast}{\section*{Vastaukset} \addcontentsline{toc}{section}{Vastaukset} \begin{vastaussivu} \input{vast} \end{vastaussivu}}
+
 % -----
 
 \raggedbottom
