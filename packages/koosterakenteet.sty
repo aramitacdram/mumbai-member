@@ -25,7 +25,7 @@
 % http://tex.stackexchange.com/questions/119646/define-a-custom-command-to-wrap-easylist
 
 \makeatletter
-\newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=l,FinalMark={)},Space*=-5pt)#1\end{easylist}\endgroup}
+\newcommand{\alakohdat@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers1=l,Numbers2=r,Hide2=1,FinalMark={)},Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\alakohdat}{\begingroup\Activate\alakohdat@aux}
 \newcommand{\numerointi@aux}[1]{\begin{easylist}\NewList(Start1=1,Numbers=a,FinalMark={.},Space*=-5pt)#1\end{easylist}\endgroup}
 \newcommand{\numerointi}{\begingroup\Activate\numerointi@aux}
