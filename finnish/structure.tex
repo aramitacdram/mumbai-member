@@ -23,7 +23,16 @@
 
 \tableofcontents
 \addtocontents{toc}{\vspace*{-50pt}}
+\Opensolutionfile{ans}[vast]
 \input{toc}
+\Closesolutionfile{ans}
+
+\chapter{Vastaukset ja hakemisto}
+\section*{Vastaukset}
+\addcontentsline{toc}{section}{Vastaukset}
+\begin{vastaussivu}
+\input{vast}
+\end{vastaussivu}
 
 \newpage
 \addcontentsline{toc}{section}{Hakemisto}
