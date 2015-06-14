@@ -37,15 +37,6 @@
 
 % -----
 
-% mustavalkoinen? (vaatii vastaavat kuvatiedostot)
-% default: väreissä
-%\newif\ifgrey
-% Jokin parempi ratkaisu tarvitaan. --NVI
-
-% endnotes pois käytöstä?
-% default: endnotes käytössä
-\newif\ifnonotes
-
 \newcommand{\kurssi}{}
 \newcommand{\painos}{}
 \newcommand{\ISBN}{}
@@ -153,13 +144,6 @@
 \input{commons/packages/index}
 
 \let\cleardoublepage\clearpage
-
-\ifnonotes
-\else
-    \usepackage{endnotes}
-    \let\footnote=\endnote
-    \renewcommand{\notesname}{Huomautukset}
-\fi
 
 % hakemistosta section
 \makeatletter
